@@ -56,10 +56,10 @@ async function runAutomation() {
         
         // Import your own module (also must be CommonJS!)
         // // you’ll need to update these files too
-        const { postTogroups } = require('./posttogroups.js'); 
+        // const { postTogroups } = require('./posttogroups.js'); 
         // const { listInmorePlaces }= require('./listinmoreplaces.js');
         
-        // const { createMarketplaceListing } =require( './listonmarketplace.js');
+        const { createMarketplaceListing } =require( './listonmarketplace.js');
         
         
         
@@ -123,7 +123,7 @@ async function runAutomation() {
                   
                   // await killchromes()
                 console.log("Waited 10 Seconds")
-                await killchromes()
+                // await killchromes()
 
 
 
@@ -135,7 +135,7 @@ async function runAutomation() {
         
         
         
-                const dataFile = path.join(os.homedir(), '.einrichten_date.json');
+                const dataFile = path.join(os.homedir(), '.eingerichtet.json');
                 const max = 14
         
                 function getTageSince(dateStr) {
@@ -259,7 +259,7 @@ async function runAutomation() {
                 }
         
         
-                function getAppDataDir(appName = 'multiprofile-fbyebot-groups') {
+                function getAppDataDir(appName = 'salah-multiproFbautoposter-us-linwinmac') {
                     const home = os.homedir();
         
                     if (platform === 'win32') {
@@ -295,12 +295,96 @@ async function runAutomation() {
 
 
 
+                const home=os.homedir();
+
+
+                // Where to store user files (can be current dir or ~/.config/appname)
+                const envDir = path.join(home, "productpaths-per-locationChanger");
+
+                // Create the directory if it's missing
+                if (!fs.existsSync(envDir)) {
+                    fs.mkdirSync(envDir, { recursive: true });
+                    console.log(`\nCreated directory for allproducts root folder paths: ${envDir}`);
+                }
+                fs.chmodSync(envDir,0o755)
+
+
+                // Where to store user files (can be current dir or ~/.config/appname)
+                const envPath = path.join(envDir ,'.env');
+                const cookiesPath = path.join(appDir, 'cookies.json');  
+                
+               
+                // Create default .env if missing
+                if (!fs.existsSync(envPath)) {
+                    fs.writeFileSync(envPath, 'root="path to your cabinets folder"');
+                    console.log('\n⛔ .env file created. Go to your home folder then search for allproductsrootpathfolder then go to the  .env  file and then kindly fill up the path to your products folder.');
+        
+                }
+                fs.chmodSync(envPath,0o755)
+                
+                // Create default cookies.json if missing
+                if (!fs.existsSync(cookiesPath)) {
+                    fs.writeFileSync(cookiesPath, JSON.stringify([], null, 2));
+                    console.log('\n ⛔cookies.json file created. go to your home folder then search .config or APPDATA(if on windows), then click it and look for folder called fbyebot-us-2.0 click it then you can log in to facebook copy and paste the cookies here in the cookie.json  \n\n');
+                }
+                fs.chmodSync(cookiesPath,0o755)
+                
+                // Load env
+                dotenv.config({ path: envPath });
+                
+                // Use cookies.json
+                // const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf-8'));
+        
+        
+                // Load cookies from the cookie.json file
+                const cookies = JSON.parse(fs.readFileSync(cookiesPath));
+        
+                        
+        
+                const cacheDir = path.join(appDir, 'usercache', 'images');
+        
+                if (!fs.existsSync(cacheDir)) {
+                  fs.mkdirSync(cacheDir, { recursive: true });
+                }
+                
+                // const screenshotPath = path.join(cacheDir, 'home.png');
+                // await page.screenshot({ path: screenshotPath });
+                
+        
+                const marketplacelistingimgs = path.join(appDir, 'marketplacelistingimgs');
+        
+                if (!fs.existsSync(marketplacelistingimgs)) {
+                  fs.mkdirSync(marketplacelistingimgs, { recursive: true });
+                }
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                //LIst of profiles to use 
                const userprofiles=[
-                    "Default","Profile 10","Profile 2","Profile 12", "Profile 11","Profile 1",
-                ]
-                // "Profile 3","Profile 4","Profile 5",
+                //    "Profile 1", //Tito's account to me
+                   "Default", //Ken Lopez Facebook Account 
+                ]   
+
+                //    ,"Profile 1","Profile 2","Profile 3"
+                //    ,"Profile 4","Profile 5",
+                // "Default","Profile 10","Profile 2","Profile 12", "Profile 11","Profile 1",   
                 // "Profile 6","Profile 7","Profile 8","Profile 9","Profile 12","Profile 10", 
                 // "Profile 11","Profile 12","Profile 13","Profile 14","Profile 15",
                 // "Profile 16","Profile 17","Profile 18","Profile 19","Profile 20"
@@ -324,14 +408,14 @@ async function runAutomation() {
                 function getRotatedIndex() {
                     const totalProfiles = userprofiles.length;
                     const now = new Date();
-                    return Math.floor(now.getHours() / 1.99) % totalProfiles; // Change the profile every 3 hours
+                    return Math.floor(now.getHours() / 12.99) % totalProfiles; // Change the profile every 3 hours
                 }
         
                 // // Function to get the current profile index based on a 10 MInuts for testing -hour rotation
                 // function getRotatedIndex() {
                 //     const totalProfiles = userprofiles.length;
                 //     const now = new Date();
-                //     return Math.floor( (now.getMinutes()) / 1.9) % totalProfiles; // Change the profile every 3 hours
+                //     return Math.floor( now.getMinutes() / 11.9) % totalProfiles; // Change the profile every 3 hours
                 // }
         
 
@@ -344,10 +428,63 @@ async function runAutomation() {
                 console.log("\n Here isthe Index to select Profile Index " + profileIndex)
         
 
-
-
                 console.log('\n 🚀 Launching Chrome with Playwright Persistent Storage... First here is the Chrome Path  '   ,chromePath , 'Here is the user--data-dir ' + chromeUserDataDir, "and here is the profile-diretory  " + userprofiles[profileIndex]);
+
+
+
+
+
+
+                // *********************Above is the proxy setting*******************************************
+
+                // console.log('\n 🚀 Launching Chrome with Playwright Persistent Storage... First here is the Chrome Path  '   ,chromePath , 'Here is the user--data-dir ' + chromeUserDataDir, "and here is the profile-diretory  " + userprofiles[profileIndex]);
+    
+                // const proxyserverandport='brd.superproxy.io:33335'
+                // const proxypassword="f1pzd1811h8j"
+                // const proxyusernames=[
+                //     "brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-178.171.6.8", //chicago/us Nexo Rion Facebook Account/Chrome Profile/ Or is it New York NY_1
+                //     "brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-158.46.212.107", //nexorionholdingsgroup@gmail.com New York/USA NY_2
+                //     "brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-198.252.45.4", //Nevada_LA/USA LA_1
+                //     "brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-198.143.3.162", //New Yor/USA Kibet's Proxy-lied is in Chicago NY_3
+                //     "brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-158.46.217.183" //New YorK/USA NY_4
+                // ]
+
+
+
+
+
+                // // Function to get the current profile index based on a 10 MInuts for testing -hour rotation
+                // function getProxyRotatedIndex() {
+                //     const totalProxies = proxyusernames.length;
+                //     const now = new Date();
+                //     return Math.floor( now.getMinutes() / 11.9) % totalProxies; // Change the profile every 3 hours
+                // }
         
+
+                // //get profile index
+                // const proxyProfileIndex=getProxyRotatedIndex();
+                // console.log("\n Here isthe Index to select Proxy Index " + proxyProfileIndex)
+        
+                // console.log('\n 🚀 Launching Chrome with Playwright Persistent Storage...Proxy Chosen  username '   ,proxyusernames[proxyProfileIndex], 'Here is the proxuemd point ' + proxyserverandport, "and here is the proxy password  " + proxypassword);
+
+                // *********************Above is the proxy setting*******************************************
+
+
+
+
+                // ******************************Webshare Proxies*******************************************
+
+
+                // const username="yntvjcps-rotate";
+                const username='yntvjcps-US-rotate'
+                const password="ta7c221qdbq9";
+                const proxyAddress="p.webshare.io"
+                // const url="https://ipv4.webshare.io/"
+                const proxyPort="80";
+
+                // const proxyString=`https://${username}:${password}@${proxyAddress}:${proxyPort}`;
+            
+
 
 
 
@@ -356,32 +493,84 @@ async function runAutomation() {
                 const browser= await chromium.launchPersistentContext(userDataDir, {
                   headless: false,
                   executablePath: chromePath,
-                  args: [
-                    '--disable-notifications',
-                    '--disable-blink-features=AutomationControlled',
-                    '--disable-infobars',
-                    '--no-sandbox', // Use with caution, understand the security implications
-                    '--disable-setuid-sandbox',
-                    '--disable-dev-shm-usage',
-                    '--ignore-certificate-errors',
-                    '--ignore-ssl-errors',
-                    '--disable-extensions', // Sometimes extensions can interfere
-                    '--disable-component-extensions-with-background-pages',
-                  ]
+                    args: [
+                      '--disable-notifications',
+                      '--disable-blink-features=AutomationControlled',
+                      '--disable-infobars',
+                      '--no-sandbox', // Use with caution, understand the security implications
+                      '--disable-setuid-sandbox',
+                      '--disable-dev-shm-usage',
+                      '--ignore-certificate-errors',
+                      '--ignore-ssl-errors',
+                      '--disable-extensions', // Sometimes extensions can interfere
+                      '--disable-component-extensions-with-background-pages',
+                    ],
+                    // *****This is Webshare proxies***************
+                    // proxy: {
+                    //      server:  `${proxyAddress}`, // Replace with your proxy host and port
+                    //      username:`${username}`, // Replace with username
+                    //      password: `${password}`, 
+                    //  }
+
+
+
+
+
+                    // *********************This below is for DataBright Proxy*******************
+                    //  proxy: {
+                    //  server:  `${proxyserverandport}`,        // Replace with your proxy host and port
+                    //  username:`${proxyusernames[proxyProfileIndex]}`,           // Replace with username
+                    //  password: `${proxypassword}`,          // Replace with your proxy password
+                    //  // username: 'brd-customer-hl_4202dfdf-zone-residential_proxy1_test-country-us-city-california',        // Replace with your proxy username                        
+                    //  // Make sure you set reject rejectUnauthorized to false
+                    //  // rejectUnauthorized: false,
+                    //  // ignoreHTTPSErrors: true // Ignore SSL errors
+
+                    //  },
+
                 });
                 
                 // Continue with automation using `browserContext.pages()[0]` or `browserContext.newPage()`
                 
 
 
-        
                 //launch new page
                 const page=await browser.newPage();
+
+                await page.setViewportSize  ({width: 1800, height: 900});
                 
-                console.log("Waiting for 10 Seconds for fun")
+
+                console.log("Waiting for 5 Seconds before screeshot for after Proxy Login")
 
                 await page.evaluate(async ()=>{
-                    return new Promise(resolve => setTimeout(resolve, 10000))
+                    return new Promise(resolve => setTimeout(resolve, 2000))
+                })
+
+
+                // Test the proxy by visiting an IP verification website
+                // await page.goto('https://myip.com', {waitUntil:"domcontentloaded", timeout:60000});
+
+                // await page.goto('https://whatismyipaddress.com/', {waitUntil:"domcontentloaded", timeout:60000});
+
+                
+                // Capture a screenshot to verify the setup
+                await page.screenshot({ path: 'example.png' });
+            
+                // await browser.close();
+        
+
+
+
+
+
+        
+                //launch new page
+                // const page=await browser.newPage();
+                
+                console.log("Waiting for 5 minutes before proceeding to Facebook.com....")
+
+                await page.evaluate(async ()=>{
+                    return new Promise(resolve => setTimeout(resolve, (8 * 1000)))
                 })
                 // setTimeout(new Promise(resolve)30000)
                 // // find the page with the new-tab URL
@@ -496,7 +685,6 @@ async function runAutomation() {
         
         
                 // Set screen size.
-                // await page.setViewportSize  ({width: 1500, height: 700});
         
         
                 // // // Allow notifications for the page
@@ -508,55 +696,7 @@ async function runAutomation() {
         
         
             
-                // Where to store user files (can be current dir or ~/.config/appname)
-                const envPath = path.join(appDir, '.env');
-                const cookiesPath = path.join(appDir, 'cookies.json');  
-                
-               
-                // Create default .env if missing
-                if (!fs.existsSync(envPath)) {
-                    fs.writeFileSync(envPath, 'EMAIL=\nPASSWORD=\nYOURPRODUCTSROOTFOLDER=\n');
-                    console.log('\n⛔ .env file created. Go to your home folder then search for .config or APPDATA(if in windows) then then it and look for folder called fbyebot-us-2.0 click it then ctr+H(linux) Ctr+Shift+ . (windows) command+shift+ .(macos) to show hidden files then click on the .env and then kindly fill up the path to your products folder.');
-        
-                }
-                fs.chmodSync(envPath,0o755)
-                
-                // Create default cookies.json if missing
-                if (!fs.existsSync(cookiesPath)) {
-                    fs.writeFileSync(cookiesPath, JSON.stringify([], null, 2));
-                    console.log('\n ⛔cookies.json file created. go to your home folder then search .config or APPDATA(if on windows), then click it and look for folder called fbyebot-us-2.0 click it then you can log in to facebook copy and paste the cookies here in the cookie.json  \n\n');
-                }
-                fs.chmodSync(cookiesPath,0o755)
-                
-                // Load env
-                dotenv.config({ path: envPath });
-                
-                // Use cookies.json
-                // const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf-8'));
-        
-        
-                // Load cookies from the cookie.json file
-                const cookies = JSON.parse(fs.readFileSync(cookiesPath));
-        
-                        
-        
-                const cacheDir = path.join(appDir, 'usercache', 'images');
-        
-                if (!fs.existsSync(cacheDir)) {
-                  fs.mkdirSync(cacheDir, { recursive: true });
-                }
-                
-                // const screenshotPath = path.join(cacheDir, 'home.png');
-                // await page.screenshot({ path: screenshotPath });
-                
-        
-                const marketplacelistingimgs = path.join(appDir, 'marketplacelistingimgs');
-        
-                if (!fs.existsSync(marketplacelistingimgs)) {
-                  fs.mkdirSync(marketplacelistingimgs, { recursive: true });
-                }
-        
-        
+         
         
         
                 
@@ -623,15 +763,15 @@ async function runAutomation() {
         
         
                             
-                        // await page.evaluate(async()=>{
-                        //     return new Promise(resolve => setTimeout(resolve, 5000))
-                        // }); 
+                        await page.evaluate(async()=>{
+                            return new Promise(resolve => setTimeout(resolve, 5000))
+                        }); 
         
                         
-                        await postTogroups(page,browser);
+                        // await postTogroups(page,browser);
         
         
-                        // await createMarketplaceListing(page,browser);
+                        await createMarketplaceListing(page,browser);
         
                         // await listInmorePlaces(page,browser);
         
@@ -847,9 +987,9 @@ async function runAutomation() {
                         // Wait for the login button submit to be available
                         // await page.waitForSelector('#loginbutton');
         
-                        //console.log email from process.env file
-                        console.log(process.env.email)
-                        console.log(process.env.password)
+                        // //console.log email from process.env file
+                        // console.log(process.env.email)
+                        // console.log(process.env.password)
         
         
         
@@ -907,10 +1047,10 @@ async function runAutomation() {
                         // }); 
         
                         
-                        await postTogroups(page,browser);
+                        // await postTogroups(page,browser);
         
         
-                        // await createMarketplaceListing(page,browser);
+                        await createMarketplaceListing(page,browser);
         
                         // await listInmorePlaces(page,browser);
         
@@ -968,9 +1108,9 @@ async function runAutomation() {
     // await browser.close()
 
     // Wait for 3 hours (10 min = 600000 for testing)
-    setTimeout(runAutomation, 2 * 60 * 60 * 1000);
+    setTimeout(runAutomation, 13 * 60 * 60 * 1000);
     // Wait for every 3 minuts to start application 
-    // setTimeout(runAutomation, 2 * 60 * 1000);
+    // setTimeout(runAutomation, 12 * 60 * 1000);
 
 }
 

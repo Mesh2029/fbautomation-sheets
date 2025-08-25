@@ -1,0 +1,604 @@
+
+// Launch the browser and open a new blank page
+// app.js
+
+// async function runAutomation() {
+//     console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🕐 Starting automation at", new Date().toLocaleString() ," \n");
+
+
+
+
+    try {
+        // ✅ Put all your automation code here:
+        // e.g., launch Chrome, connectOverCDP, post to Facebook, etc.
+
+        // Example placeholder:
+        // await launchBrowserForProfile(profilePath);
+        // await doAutomation(page);
+
+
+
+
+        // #!/usr/bin/env node
+
+        // import dotenv from 'dotenv';
+        // dotenv.config();
+        
+        // Or import puppeteer from 'puppeteer-core';
+        // import { fileURLToPath } from 'url';
+        
+        
+        
+        
+        const dotenv = require('dotenv');
+        dotenv.config();
+        
+        
+        // const puppeteer = require('puppeteer-extra'); // or puppeteer-core
+        const path = require('path');
+        const fs = require('fs');
+        const os = require('os');
+        const { platform } = require('process');
+        const { chromium } = require('playwright');
+        const { spawn } = require('child_process');
+        const { exec } = require('child_process');
+        // const net = require("net")s;
+        
+        
+        // const StealthPlugin = require('puppeteer-extra-plugin-stealth');        
+        // puppeteer.use(StealthPlugin());
+        
+        // // To get __dirname and __filename in CommonJS
+        // const fileur = __filename || require('url').fileURLToPath(import.meta.url);
+        // const __dirname = path.dirname(__filename);
+        
+        // const fileURLToPath =require('')
+        
+        // Import your own module (also must be CommonJS!)
+        // // you’ll need to update these files too
+        const { postTogroups } = require('./posttogroups.js'); 
+        // const { listInmorePlaces }= require('./listinmoreplaces.js');
+        
+        // const { createMarketplaceListing } =require( './listonmarketplace.js');
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        (async ()=>{
+        
+            try{
+
+
+                //First Killing all Existing chromes 
+                const killchromes= async()=>{
+                    const isWindows = process.platform === 'win32';
+                    
+                    const killCommand = isWindows
+                    ? 'taskkill /F /IM chrome.exe /T' // Windows
+                    : 'pkill chrome';                // Linux/macOS
+                    
+                    return new Promise((resolve,reject)=>{
+
+                        exec(killCommand, (error, stdout, stderr) => {
+                            if (error) {
+                                console.error(`❌ Error killing Chrome: ${error.message}`);
+                                setTimeout(resolve,3000)
+
+                                // reject(error)
+                                return;
+                            }
+                            if (stderr) {
+                                console.error(`⚠️ stderr: ${stderr}`);
+                                // resolve(resolve=> setTimeout(resolve,30000))
+                                setTimeout(resolve,3000)
+
+                                return;
+                            }
+                                console.log(' ✅ Chrome processes killed');
+                                // resolve(resolve=> setTimeout(resolve,30000))
+                                setTimeout(resolve,3000)
+
+                        });
+                        
+
+                    })
+                }        
+            
+                //Kill Chrome processes 
+                console.log("\About to kill All Chrome Processes Running Before Starting the Program waiting for 5 Seconds");
+                await delay(5000)
+
+                function delay(ms) {
+                    return new Promise(resolve => setTimeout(resolve, ms));
+                  }
+                  
+                  // await killchromes()
+                console.log("Waited 10 Seconds")
+                // await killchromes()
+
+
+
+
+
+        
+                console.log('WELCOME TO Fbyebot FB Marketplace Automation Software; The App Just Started')
+        
+        
+        
+        
+                const dataFile = path.join(os.homedir(), '.einrichten_date.json');
+                const max = 31
+        
+                function getTageSince(dateStr) {
+                    const einrichten = new Date(dateStr);
+                    const now = new Date();
+                    const nowUTC=new Date(now.toISOString())
+                    const diffZeit = nowUTC.getTime() - einrichten.getTime();
+        
+                    // console.log("Here isthe einrichten Uhrzeit ", einrichten),
+                    // console.log("Here isthe JetztUTC Uhrzeit ", nowUTC),
+                    // console.log("here is the zeit  unterschied ", diffZeit/(1000*60*60*24))
+                    // return Math.floor(diffZeit / (1000 * 60 * 60 * 24));
+        
+                    
+                    return Math.floor(diffZeit / (1000 * 60 * 60 * 24));
+                    
+                }
+        
+                async function checkProbeZeit() {
+                    if (!fs.existsSync(dataFile)) {
+                        // First run: store the current datea
+                        const data = { einrichtenOn: new Date().toISOString() };
+                        fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+                        return true;
+                    }
+        
+                    // File exists: check the date
+                    const raw = fs.readFileSync(dataFile);
+                    const { einrichtenOn } = JSON.parse(raw);
+                    const tagePassed = getTageSince(einrichtenOn);
+        
+                    if (tagePassed > max) {
+                        console.log(`⛔ CRITICAL ERROR NUMBER (${tagePassed} ). PLEASE CONTACT DEVELOPER!.`);
+                        console.log(`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER!. Email: yegonk247@gmail.com or phone: +254706727834`);
+        
+                        return false;
+                    }
+        
+                        console.log(`✅ VALID NUMBER.... ${tagePassed} and ${max}`);
+                        console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED`);
+        
+        
+                    return true;
+                }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                const probeOk = await checkProbeZeit();
+                
+                if (!probeOk) {
+                    return (`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER.`);
+                }
+        
+                console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED MAKE RUN`);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                // Detect platform and set Chrome path accordingly
+                function getChromeExecutablePath() {
+        
+                    const platform = os.platform();
+        
+                    if (platform === 'win32') {
+                        // Windows
+                        const winChromePaths = [
+                            "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+                            "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+                        ];
+        
+                        for (const p of winChromePaths) {
+                            if (fs.existsSync(p)) return p;
+                        }
+                    }
+                    else if (platform === 'darwin') {
+                        // macOS
+                        return "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+                    }
+                    else if (platform === 'linux') {
+                        // Linux
+                        const linuxChromePaths = [
+                            '/usr/bin/google-chrome',
+                            '/usr/bin/chromium-browser',
+                            '/usr/bin/chromium'
+                        ];
+                
+                        for (const p of linuxChromePaths) {
+                            console.log("path to chrome ", p)
+                            if (fs.existsSync(p)) return p;
+                        }
+                    }
+        
+                    return null; // fallback if none found
+                }
+        
+                const chromePath = getChromeExecutablePath();
+                console.log(chromePath);
+        
+                if (!chromePath) {
+        
+                    console.error("❌ Could not find Chrome/Chromium on this system.");
+                    process.exit(1);
+                }
+        
+        
+                function getAppDataDir(appName = 'multiprofile-fbyebot-groups') {
+                    const home = os.homedir();
+        
+                    if (platform === 'win32') {
+                        return path.join(process.env.APPDATA || path.join(home, 'AppData', 'Roaming'), appName);
+                    }
+        
+                    // Linux and macOS
+                    return path.join(home, '.config', appName);
+                }
+        
+                const appDir = getAppDataDir(); // e.g., ~/.config/fbyebot or %APPDATA%\fbyebot
+
+
+                 // Ensure folder exists
+                 if (!fs.existsSync(appDir)) {
+                     fs.mkdirSync(appDir, { recursive: true });
+                    console.log("No AppDir Found Just Created a New AppDir  at ", appDir);
+                }
+                console.log("AppDir Found, Continue...")
+                fs.chmodSync(appDir,0o755)
+            
+        
+                const chromeUserDataDir = path.join(appDir, "fbyebotChromeProfiles")
+        
+                if(!fs.existsSync(chromeUserDataDir)){
+                    fs.mkdirSync(chromeUserDataDir,{recursive:true});
+                    console.log(" chromeUserDataDir not Found!! , Just Created a new chromeUserDataDir  in ", chromeUserDataDir );
+                }
+            
+                console.log("chromeUserDataDir path Found at "  , chromeUserDataDir, " Continue... ")
+                fs.chmodSync(chromeUserDataDir,0o755)
+            
+
+
+
+
+               //LIst of profiles to use 
+               const userprofiles=[
+                    'Profile 6'
+                ]   
+                // "Profile 1"
+                // "Default","Profile 10","Profile 2","Profile 12", "Profile 11","Profile 1",   
+                // "Profile 3","Profile 4","Profile 5",
+                // "Profile 6","Profile 7","Profile 8","Profile 9","Profile 12","Profile 10", 
+                // "Profile 11","Profile 12","Profile 13","Profile 14","Profile 15",
+                // "Profile 16","Profile 17","Profile 18","Profile 19","Profile 20"
+
+
+                for(const userprofile of userprofiles){
+                    const chromeUserProfile = path.join(chromeUserDataDir, userprofile)
+                    
+                    if(!fs.existsSync(chromeUserProfile)){
+                        fs.mkdirSync(chromeUserProfile,{recursive:true});
+                        console.log(" chromeUserProfile  not Found, Just Created a new chromeUserDataDir  in ", chromeUserProfile );
+                    }
+                
+                    console.log("chromeUserProfile path Found at "  , chromeUserProfile, " Continue... ")
+                    fs.chmodSync(chromeUserProfile,0o755)
+                
+                }
+        
+
+                // Function to get the current profile index based on a 3-hour rotation
+                function getRotatedIndex() {
+                    const totalProfiles = userprofiles.length;
+                    const now = new Date();
+                    return Math.floor(now.getHours() / 1.99) % totalProfiles; // Change the profile every 3 hours
+                }
+        
+                // // Function to get the current profile index based on a 10 MInuts for testing -hour rotation
+                // function getRotatedIndex() {
+                //     const totalProfiles = userprofiles.length;
+                //     const now = new Date();
+                //     return Math.floor( (now.getMinutes()) / 1.9) % totalProfiles; // Change the profile every 3 hours
+                // }
+        
+
+            
+
+
+
+                //get profile index
+                const profileIndex=getRotatedIndex();
+                console.log("\n Here isthe Index to select Profile Index " + profileIndex)
+        
+
+
+
+                console.log('\n 🚀 Launching Chrome with Playwright Persistent Storage... First here is the Chrome Path  '   ,chromePath , 'Here is the user--data-dir ' + chromeUserDataDir, "and here is the profile-diretory  " + userprofiles[profileIndex]);
+        
+
+                const proxyserverandport='brd.superproxy.io:33335'
+                const proxypassword="f1pzd1811h8j"
+                const proxyusernames=[
+                    "brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-178.171.6.8", //chicago/us Nexo Rion Facebook Account/Chrome Profile
+                    "brd.superproxy.io:33335:brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-158.46.212.107", //nexorionholdingsgroup@gmail.com New York/USA
+                    "brd.superproxy.io:33335:brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-198.143.3.162", //Chicago/USA Kibet's Proxy
+
+                    "brd.superproxy.io:33335:brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-198.252.45.4", //Chicago/USA
+                    "brd.superproxy.io:33335:brd-customer-hl_4202dfdf-zone-fbyebot_isp_proxy_1-ip-158.46.217.183" //New YorK/USA
+                ]
+
+
+                const userDataDir = path.join(chromeUserDataDir,userprofiles[profileIndex])
+                
+                const browser= await chromium.launchPersistentContext(userDataDir, {
+                  headless: false,
+                  executablePath: chromePath,
+                  proxy: {
+                    server:  `${proxyserverandport}`,        // Replace with your proxy host and port
+                    username:`${proxyusernames[0]}`,           // Replace with username
+                    password: `${proxypassword}`,          // Replace with your proxy password
+                    // username: 'brd-customer-hl_4202dfdf-zone-residential_proxy1_test-country-us-city-california',        // Replace with your proxy username
+                    
+                    // Make sure you set reject rejectUnauthorized to false
+                    // rejectUnauthorized: false,
+                    // ignoreHTTPSErrors: true // Ignore SSL errors
+
+                  },
+                  args: [
+                    '--disable-notifications',
+                    '--disable-blink-features=AutomationControlled',
+                    '--disable-infobars',
+                    '--no-sandbox', // Use with caution, understand the security implications
+                    '--disable-setuid-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--ignore-certificate-errors',
+                    '--ignore-ssl-errors',
+                    '--disable-extensions', // Sometimes extensions can interfere
+                    '--disable-component-extensions-with-background-pages',
+                  ]
+                });
+                
+                // Continue with automation using `browserContext.pages()[0]` or `browserContext.newPage()`
+                
+
+
+                //launch new page
+                const page=await browser.newPage();
+
+                                
+                console.log("Waiting for 5 Seconds before screeshot for after Proxy Login")
+
+                await page.evaluate(async ()=>{
+                    return new Promise(resolve => setTimeout(resolve, 5000))
+                })
+
+
+                // Test the proxy by visiting an IP verification website
+                await page.goto('https://myip.com', {waitUntil:"domcontentloaded", timeout:30000});
+                // Capture a screenshot to verify the setup
+                await page.screenshot({ path: 'example.png' });
+            
+                // await browser.close();
+        
+
+
+
+
+
+        
+                //launch new page
+                // const page=await browser.newPage();
+                
+                console.log("Waiting for 1 hour before closing The Manual Browser....")
+
+                await page.evaluate(async ()=>{
+                    return new Promise(resolve => setTimeout(resolve, (60*60*1000)))
+                })
+                // setTimeout(new Promise(resolve)30000)
+                // // find the page with the new-tab URL
+                // for (const context of browser.contexts()) {
+                //     for (const p of context.pages()) {
+                //         if (p.url() === 'chrome://new-tab-page/') {
+                //             console.log('🎯 Found clean launch tab, using this page.');
+                //             page = p;
+                //             break;
+                //         }
+                //     }
+                //     if (page) break;
+                // }
+                
+                // // fallback: if no new-tab-page found, just use the first context
+                // if (!page) {
+                //     console.warn('⚠️ No new-tab page found. Defaulting to new page in first context.');
+                //     const context = browser.contexts()[0];
+                //     page = await context.newPage();
+                // }
+                
+                // // await page.goto('https://facebook.com');
+                
+        
+                
+                
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+                
+        
+                // console.log("Here is the needed context ", context)
+                
+                // const page = await context.newPage();
+        
+                console.log('🧭 Page:', page.url());
+                
+                await page.goto('https://www.facebook.com/', { waitUntil: 'domcontentloaded', timeout:60000 });
+        
+                
+
+
+                const url = page.url();
+                
+                try{
+                    // await page.wait
+
+                    //  Wait and click on first result.
+                
+                    await page.waitForSelector("a[aria-label='Home'][role='link']")
+            
+                    console.log('✅ Already logged in to FACEBOOK!');
+                }
+                catch(err){
+                    if(err.name==="TimeoutError"){
+                        console.log('❌ Not logged in to Facebook! Kindly Check the Browser and Login');
+                    }
+                }
+
+        
+        
+        
+            
+                // Where to store user files (can be current dir or ~/.config/appname)
+                const envPath = path.join(appDir, '.env');
+                const cookiesPath = path.join(appDir, 'cookies.json');  
+                
+               
+                // Create default .env if missing
+                if (!fs.existsSync(envPath)) {
+                    fs.writeFileSync(envPath, 'EMAIL=\nPASSWORD=\nYOURPRODUCTSROOTFOLDER=\n');
+                    console.log('\n⛔ .env file created. Go to your home folder then search for .config or APPDATA(if in windows) then then it and look for folder called fbyebot-us-2.0 click it then ctr+H(linux) Ctr+Shift+ . (windows) command+shift+ .(macos) to show hidden files then click on the .env and then kindly fill up the path to your products folder.');
+        
+                }
+                fs.chmodSync(envPath,0o755)
+                
+                // Create default cookies.json if missing
+                if (!fs.existsSync(cookiesPath)) {
+                    fs.writeFileSync(cookiesPath, JSON.stringify([], null, 2));
+                    console.log('\n ⛔cookies.json file created. go to your home folder then search .config or APPDATA(if on windows), then click it and look for folder called fbyebot-us-2.0 click it then you can log in to facebook copy and paste the cookies here in the cookie.json  \n\n');
+                }
+                fs.chmodSync(cookiesPath,0o755)
+                
+                // Load env
+                dotenv.config({ path: envPath });
+                
+                // Use cookies.json
+                // const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf-8'));
+        
+        
+                // Load cookies from the cookie.json file
+                const cookies = JSON.parse(fs.readFileSync(cookiesPath));
+        
+                        
+        
+                const cacheDir = path.join(appDir, 'usercache', 'images');
+        
+                if (!fs.existsSync(cacheDir)) {
+                  fs.mkdirSync(cacheDir, { recursive: true });
+                }
+                
+                // const screenshotPath = path.join(cacheDir, 'home.png');
+                // await page.screenshot({ path: screenshotPath });
+                
+        
+                const marketplacelistingimgs = path.join(appDir, 'marketplacelistingimgs');
+        
+                if (!fs.existsSync(marketplacelistingimgs)) {
+                  fs.mkdirSync(marketplacelistingimgs, { recursive: true });
+                }
+               
+        
+                    
+            }
+            catch(err){
+                console.log("I just created an error during login")
+                console.log(err);
+            }
+        })()
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        console.log("✅ Automation completed.");
+    } catch (err) {
+        console.error("❌ Automation failed:", err);
+    }
+
+    // console.log("⏳ Waiting 3 hours until next run...\n");
+
+    // await browser.close()
+
+    // Wait for 3 hours (10 min = 600000 for testing)
+    // setTimeout(runAutomation, 2 * 60 * 60 * 1000);
+    // Wait for every 3 minuts to start application 
+    // setTimeout(runAutomation, 2 * 60 * 1000);
+
+

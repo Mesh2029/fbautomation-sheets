@@ -13,7 +13,7 @@ async function  createMarketplaceListing(page,browser){
 
     try{
         
-        function getAppDataDir(appName = 'fbyebot-us-2.0') {
+        function getAppDataDir(appName = 'salah-multiproFbautoposter-us-linwinmac') {
             const home = os.homedir();
 
             if (platform === 'win32') {
@@ -70,77 +70,77 @@ async function  createMarketplaceListing(page,browser){
             if(msg.text().includes("here textareas")){
                 console.log('PAGE LOG:', msg.text())
             }
-        //     else if(msg.text().includes("nextbuttonclicked ")){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("nextbuttonclicked ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("Next Button for listing Not found")){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("Next Button for listing Not found")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("span for next button ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("span for next button ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("already Clicked on the share to marketplace Button")){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("already Clicked on the share to marketplace Button")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("Here are the share to marketplace spans    ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("Here are the share to marketplace spans    ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("Span with required Marketplace sharing not Found   ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("Span with required Marketplace sharing not Found   ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("Here is the share to marketplace innerHTML inside the span for loop AND MATCHES    ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("Here is the share to marketplace innerHTML inside the span for loop AND MATCHES    ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     } else if(msg.text().includes("here textareas TEXT AREAS SPACE WITH TH FORMATTED DESCRIPTION "   )){
-        //         console.log('PAGE LOG:', msg.text())
+            } else if(msg.text().includes("here textareas TEXT AREAS SPACE WITH TH FORMATTED DESCRIPTION "   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("Already Clicked and fillled the Desciption Input"   )){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("Already Clicked and fillled the Desciption Input"   )){
+                console.log('PAGE LOG:', msg.text())
 
         
-        //     }
-        //     else if(msg.text().includes("No description Text Area"   )){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("No description Text Area"   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
+            }
             
-        //     else if(msg.text().includes("Description Text Area not Found  "   )){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("Description Text Area not Found  "   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }     
+            }     
 
-        //     else if(msg.text().includes("here textareas content"   )){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("here textareas content"   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }     
+            }     
             
-        //     else if(msg.text().includes("here textareas value"   )){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("here textareas value"   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("just did a scroll"   )){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("just did a scroll"   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }     
-        //     else if(msg.text().includes("scrollable div is right here"   )){
-        //         console.log('PAGE LOG:', msg.text())
+            }     
+            else if(msg.text().includes("scrollable div is right here"   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }
-        //     else if(msg.text().includes("whole document height"   )){
-        //         console.log('PAGE LOG:', msg.text())
+            }
+            else if(msg.text().includes("whole document height"   )){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }     
-        //     else if(msg.text().includes("scrollabledivs lenghts here is the number of scrollable divs length  ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }     
+            else if(msg.text().includes("scrollabledivs lenghts here is the number of scrollable divs length  ")){
+                console.log('PAGE LOG:', msg.text())
 
-            // } ,  
+            }
             else if(msg.text().includes("now within category options ")){
                 console.log('PAGE LOG:', msg.text())
 
@@ -149,71 +149,71 @@ async function  createMarketplaceListing(page,browser){
                  console.log('PAGE LOG:', msg.text())
 
              }                   
-        //     else if(msg.text().includes("Clicked the More Details Button, waitting to Expand forr More ")){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("Clicked the More Details Button, waitting to Expand forr More ")){
+                console.log('PAGE LOG:', msg.text())
 
 
-        //     }   
-        //     else if(msg.text().includes("More Details Button Not Found ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }   
+            else if(msg.text().includes("More Details Button Not Found ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }          
-        //     else if(msg.text().includes("span for next button ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }          
+            else if(msg.text().includes("span for next button ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }   
-        //     else if(msg.text().includes("nextbuttonclicked ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }   
+            else if(msg.text().includes("nextbuttonclicked ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }   
-        //     else if(msg.text().includes("Next Button for listing Not found")){
-        //         console.log('PAGE LOG:', msg.text())
+            }   
+            else if(msg.text().includes("Next Button for listing Not found")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }  
-        //     else if(msg.text().includes("here is the sharetomoregroups container")){
-        //         console.log('PAGE LOG:', msg.text())
+            }  
+            else if(msg.text().includes("here is the sharetomoregroups container")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }  
-        //     else if(msg.text().includes("here is the height of the sharetomoregroups Container ")){
-        //         console.log('PAGE LOG:', msg.text())
+            }  
+            else if(msg.text().includes("here is the height of the sharetomoregroups Container ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }  
+            }  
 
-        //     else if(msg.text().includes("Condition Options cliked  successfully.")){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("Condition Options cliked  successfully.")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }  
+            }  
 
-        //     else if(msg.text().includes("Condition Options Button not Found ")){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("Condition Options Button not Found ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     }  
+            }  
 
-        //     else if(msg.text().includes("Selected Condition Options cliked  successfully.")){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("Selected Condition Options cliked  successfully.")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     } 
-        //     else if(msg.text().includes("no Conditon Option Selected Option")){
-        //         console.log('PAGE LOG:', msg.text())
+            } 
+            else if(msg.text().includes("no Conditon Option Selected Option")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     } 
-        //     else if(msg.text().includes("Here is the pop up container  ")){
-        //         console.log('PAGE LOG:', msg.text())
+            } 
+            else if(msg.text().includes("Here is the pop up container  ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     } 
-        //     else if(msg.text().includes("EACH LOOP OF CLOSE POPUP BUTTON ")){
-        //         console.log('PAGE LOG:', msg.text())
+            } 
+            else if(msg.text().includes("EACH LOOP OF CLOSE POPUP BUTTON ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     } 
-        //     else if(msg.text().includes("here is the CRAZY POP UP")){
-        //         console.log('PAGE LOG:', msg.text())
+            } 
+            else if(msg.text().includes("here is the CRAZY POP UP")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     } 
+            } 
 
-        //     else if(msg.text().includes("NO POP UP LISTE IN THE POP CONTAINER ")){
-        //         console.log('PAGE LOG:', msg.text())
+            else if(msg.text().includes("NO POP UP LISTE IN THE POP CONTAINER ")){
+                console.log('PAGE LOG:', msg.text())
 
-        //     } 
+            } 
             
 
 
@@ -261,7 +261,7 @@ async function  createMarketplaceListing(page,browser){
             }
 
 
-            // Read the content of the text file
+            // // Read the content of the text file
             const txtFilePath = path.join(rootfolderpath, txtFile);
             const fileContent = fs.readFileSync(txtFilePath, 'utf8');
 
@@ -276,14 +276,14 @@ async function  createMarketplaceListing(page,browser){
 
             // Return both text content and image file paths
             return {
-                rootfoldertxtContent: fileContent,
+                rootfoldertxtContentLocation: fileContent,
                 imagestxtfilepaths:imagetextpaths,
                 imagespaths:imagepaths,
             };
         };
 
         // Read  ROOT folder contents
-        const {rootfoldertxtContent,imagestxtfilepaths,imagespaths}=readFolderContents();
+        const {rootfoldertxtContentLocation,imagestxtfilepaths,imagespaths}=readFolderContents();
 
         
         // const productsfolders=[];
@@ -330,18 +330,18 @@ async function  createMarketplaceListing(page,browser){
         for(const productfolder of productsfolders){
 
              //only wait for 15 seconds before beginning to post for the next product in our catalogue 
-             console.log("only wait for 15 seconds before beginning to post for the next product in our catalogue"); 
+             console.log("\n\n only wait for 15 seconds before beginning to post for the next product in our catalogue\n"); 
 
 
 
 
             // // wait for 30 seconds before screenshot of the CREATE LISTING PAGE 
             await page.evaluate(async()=>{
-                return new Promise(resolve => setTimeout(resolve, 5000))
+                return new Promise(resolve => setTimeout(resolve, 7000))
             }); 
 
 
-            console.log("Beginningo of the Listing of a NEW NEXT PRODUCT Here is the product's Path       " + productfolder );    
+            console.log("\n\n Beginningo of the Listing of a NEW NEXT PRODUCT Here is the product's Path     \n\n  " + productfolder );    
 
            
 
@@ -383,7 +383,7 @@ async function  createMarketplaceListing(page,browser){
             // page.setCacheEnabled(false)
             
             const originalurl=page.url();
-            
+            console.log("original url ", originalurl);
             
             
             
@@ -417,9 +417,9 @@ async function  createMarketplaceListing(page,browser){
 
                 await page.goto("https://web.facebook.com/marketplace/?ref=app_tab", { waitUntil: 'load', timeout:80000 });
                 
-            
+
                 await page.evaluate(async()=>{
-                    return new Promise(resolve => setTimeout(resolve, 3000))
+                    return new Promise(resolve => setTimeout(resolve, 5000))
                 }); 
         
 
@@ -454,12 +454,167 @@ async function  createMarketplaceListing(page,browser){
                 }); 
         
 
+                //Change Location before starting to list product
+
+                const locationvalue=rootfoldertxtContentLocation
+
+                console.log("here is the folder and value of the  location file" + locationvalue);
+
+                // If the content is like "location= Davies,Florida", you might want to parse it
+                // Example: Extract "Location"
+
+                const locationparts = locationvalue.split('=');
+                const location = locationparts.length > 1 ? locationparts[1].trim() : locationvalue.trim();
+
+                
+                
+                //Find and click on the location button to choose and change location
+                const sanitizelocationparts=location.split(",").map(location=>location.trim());
+                const sanitizedlocation = sanitizelocationparts.length > 1 ? sanitizelocationparts.join(" ") : sanitizelocationparts[0];
+                
+                
+                console.log("\n Here is the picked location to post to sanitized location ", sanitizedlocation);
+                //Click on the location button 
+
+                console.log("About to click on the location chooser button");
+                await page.locator("xpath=//div[@id='seo_filters']/div[@role='button']").click();
+
+                console.log("Waiting after clicking on the location chooser");
+
+                await page.waitForTimeout(2000)
+
+
+                //click location input 
+                const locationinput=await page.locator("xpath=//input[@role='combobox' and @aria-label='Location']")
+
+                await locationinput.click();
+                console.log("clicked on the location input ....")
+
+                await locationinput.type(sanitizedlocation, {delay:600, timeout:40000});
+                console.log("Typed on the location input ....")
+
+                await page.waitForTimeout(2000);
+
+                
+                try{
+                    // const searchoptionslistbox=await page.locator("xpath=//div[@class='__fb-light-mode']");
+                    const searchoptionslistbox=await page.locator("xpath=//ul[@role='listbox' and contains(@aria-label, 'suggested searches')]");
+
+                    // Wait for at least one element to appear that matches the locator
+                    await searchoptionslistbox.first().waitFor(); 
+
+                    console.log("Here is the number of searchoptions listbox, ", await searchoptionslistbox.count())
+
+                    const searchoptions=await searchoptionslistbox.locator("xpath=//li")
+                    const searchoptionsarray=await searchoptions.all();
+
+                    const totalnumberofsearchoptions=await searchoptions.count();
+
+                    console.log("Here is the number of searchoptions, ", await searchoptions.count())
+
+                    let isMatch=false;
+
+                    for(const [index,searchoption] of searchoptionsarray.entries()){
+                        if(isMatch===true) break;
+
+                        const searchoptionsSpan=await searchoption.locator("xpath=//span").first();
+                        
+                        const spanText=await searchoptionsSpan.textContent();
+                        const sanitizedSpanText=spanText.toUpperCase().trim();
+                        
+                        
+                        console.log("Here is sanitized searchoptions Span Text ", sanitizedSpanText);
+                        
+                        if(sanitizedSpanText===sanitizedlocation.toUpperCase()){
+                            console.log("\nTry to match my neede location ", sanitizedlocation , " to FB location", sanitizedSpanText);
+                            console.log("Got Exact Match for this FB location option ", sanitizedSpanText , " \n");
+
+                            await searchoption.click();
+                            break;
+                        }
+                        
+                        if(index===totalnumberofsearchoptions-1){
+
+                            for(const [index,searchoption] of searchoptionsarray.entries()){
+                                if (isMatch===true) break;
+                                
+
+                                const searchoptionsSpan=await searchoption.locator("xpath=//span").first();
+                        
+                                const spanText=await searchoptionsSpan.textContent();
+                                const sanitizedSpanText=spanText.toUpperCase().trim();
+                                
+                        
+
+                                console.log("\n\n\n Here is the index, ", index ,"   \n\n\n");
+                                const splitlocationstring=sanitizedlocation.toUpperCase().split(" ")
+                                
+
+                                for(const splitstring of splitlocationstring){
+                                    if(sanitizedSpanText.includes(splitstring)){
+                                        isMatch=true;
+                                        console.log("\nTry to match my needed location ", sanitizedlocation , "the part of it ",splitstring,  "to FB location", sanitizedSpanText);
+                                        console.log("Chose Almost similar this FB location option ", sanitizedSpanText , " \n");
+                                        await searchoption.click();
+
+                                        break;
+                                    }
+                                    else{
+                                        console.log("\nTry to match my needed location ", sanitizedlocation , "the part of it ",splitstring,  "to FB location", sanitizedSpanText);
+                                        console.log("This part of the My needed location, ",splitstring, "No Match found for this FB location option ", sanitizedSpanText , " Skip this Piece of Location\n");
+                                    }
+                                }
+                      
+
+                            }
+
+                        }
+                        else{
+                            console.log("Still more location options to consider ");
+                        }
+                    }
+
+                    //Finished looking for location now the Radisu should go htere
+                    await page.waitForTimeout(4000);
+
+                    //Click on the apply button 
+                    await page.locator("xpath=//div[@role='button' and @aria-label='Apply' and .//span[text()='Apply']]").click();
+
+                    await page.waitForTimeout(6000);
+                    console.log("Waiting 6 seconds after clicking Apply to Change location....")
+
+
+                }
+                catch(error){
+                    if(error.name==="TimeoutError"){
+                        console.log("Location Not Found \n", error);
+                        throw error
+                    }
+                    else{
+                        console.log("A different location Error")
+                    }
+                }
+              
+                console.log("Finished changing for location using provided location ");
+                await page.waitForTimeout(5000)
+                // const filepath=path.join(rootfolderpath, "folderdetails.txt")
+
+                // Read the content of the file
+                // const fileContent = fs.readFileSync(filepath, 'utf8');
+
+                // // Assuming the content is simple text, you can log it or use it further
+                // console.log('Folder listing details File Content:', fileContent);
+
+                // If the content is like "listingtype: Item for sale", you might want to parse it
+                // Example: Extract "Item for sale"
+                // const listingType = fileContent.split(':')[1]?.trim(); // Extract the part after "listingtype:"
+
 
 
                 
                 // console.log("have waited for 30 seconds before taking the screenshot of create lising page above")
 
-
+                //Click and start using the Create New lisgint button 
                 await page.waitForSelector('//a[.//span[text()="Create new listing"]]');
 
                 // Wait for the link to be available
@@ -497,32 +652,24 @@ async function  createMarketplaceListing(page,browser){
 
 
                                 
-            console.log("here is the folder path " + rootfolderpath)
+     
 
-            const filepath=path.join(rootfolderpath, "folderdetails.txt")
+            const listingType="Item for sale";
 
-            // Read the content of the file
-            const fileContent = fs.readFileSync(filepath, 'utf8');
-
-            // // Assuming the content is simple text, you can log it or use it further
-            // console.log('Folder listing details File Content:', fileContent);
-
-            // If the content is like "listingtype: Item for sale", you might want to parse it
-            // Example: Extract "Item for sale"
-            const listingType = fileContent.split(':')[1]?.trim(); // Extract the part after "listingtype:"
-
-            // console.log('Listing Type:', listingType);
+            console.log('Listing Type:', listingType);
             
+
+
 
             if(listingType==='Item for sale'){
                 // await page.waitForXPath('//a[.//span[text()="Item for sale"]]');
 
 
 
-                await page.waitForSelector('//a[.//span[text()="Item for sale"]]');
+                await page.waitForSelector('//div[.//span[text()="Item for sale"]]');
 
                 // Wait for the link to be available
-                const itemforsalebutton = await page.$('//a[.//span[text()="Item for sale"]]');
+                const itemforsalebutton = await page.$('//div[.//span[text()="Item for sale"]]');
 
                 const itemforsaleElementHandle=itemforsalebutton;
 
@@ -602,6 +749,9 @@ async function  createMarketplaceListing(page,browser){
                                     // console.log("Here are the buttons on upload images")
                                     // console.log(addImageButton);
 
+                    // await page.locator("xpath=//div[@role='button' and .//span[text()='Add photos'] and .//span[text()='or drag and drop']]").click();
+
+
                                     // Filter buttons based on the text content inside
                                     console.log("AddImageButton  Length   " + addImageButton.length);
                                     
@@ -611,7 +761,7 @@ async function  createMarketplaceListing(page,browser){
                                         
                                         
                                         
-                                        if (addImgBtn.includes('or drag and drop')) {
+                                        if (addImgBtn.includes('or drag and drop' ) && addImgBtn.includes('Add photos')) {
 
                                             // console.log("Here are the evaluated add image buttons on upload images")
                                             
@@ -703,7 +853,7 @@ async function  createMarketplaceListing(page,browser){
 
                                                     // Return both text content and image file paths
                                                     return {
-                                                        rootfoldertxtContent: fileContent,
+                                                        // rootfoldertxtContent: fileContent,
                                                         imagestxtfilepaths:imagetextpaths,
                                                         imagespaths:imagepaths,
                                                     };
@@ -749,7 +899,7 @@ async function  createMarketplaceListing(page,browser){
                                                 // Replace ellipses (...) with new lines (\n) in the description
                                                 const formattedDescription = data.description.replace(/\.\.\./g, '\n\n');
 
-                                                const formattedTags=data.tags.split("...");
+                                                // const formattedTags=data.tags.split("...");
 
                                                 // console.log("here are the formattted tagss  formattedTags");
                                                 // console.log(formattedTags);
@@ -806,66 +956,13 @@ async function  createMarketplaceListing(page,browser){
 
 
 
-
-                                                await page.waitForSelector(".x1i10hfl.xggy1nq.x1s07b3s.x1kdt53j.x1a2a7pz.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.xzsf02u.x1uxerd5.x1fcty0u.x132q4wb.x1a8lsjc.x1pi30zi.x1swvt13.x9desvi.xh8yej3")
+                                                // ***************************************Somthing could be here ***************************************8
+                                                // await page.waitForSelector(".x1i10hfl.xggy1nq.x1s07b3s.x1kdt53j.x1a2a7pz.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.xzsf02u.x1uxerd5.x1fcty0u.x132q4wb.x1a8lsjc.x1pi30zi.x1swvt13.x9desvi.xh8yej3")
 
                                                 // Select all labels with aria-label="Title"
                                                 // const labels = await page.$$(".x1i10hfl.xggy1nq.x1s07b3s.x1kdt53j.x1a2a7pz.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.xzsf02u.x1uxerd5.x1fcty0u.x132q4wb.x1a8lsjc.x1pi30zi.x1swvt13.x9desvi.xh8yej3");
 
                                                 // await page.waitForSelector
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -959,8 +1056,8 @@ async function  createMarketplaceListing(page,browser){
 
                                                 // await page.waitForSelector('label[aria-label="Price"]');
                                                 //Here is the modified text with dots after each class and no spaces:  
-
-                                                await page.waitForSelector(".x1i10hfl.xggy1nq.x1s07b3s.x1kdt53j.x1a2a7pz.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.xzsf02u.x1uxerd5.x1fcty0u.x132q4wb.x1a8lsjc.x1pi30zi.x1swvt13.x9desvi.xh8yej3")
+                                                // *******************************//There could be something here also ***************************
+                                                // await page.waitForSelector(".x1i10hfl.xggy1nq.x1s07b3s.x1kdt53j.x1a2a7pz.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.xzsf02u.x1uxerd5.x1fcty0u.x132q4wb.x1a8lsjc.x1pi30zi.x1swvt13.x9desvi.xh8yej3")
 
                                                 // "x1i10hfl.xggy1nq.x1s07b3s.x1kdt53j.x1a2a7pz.xjbqb8w.x1ejq31n.xd10rxx.x1sy0etr.x17r0tee.x9f619.xzsf02u.x1uxerd5.x1fcty0u.x132q4wb.x1a8lsjc.x1pi30zi.x1swvt13.x9desvi.xh8yej3"
                                                 // Select all labels with aria-label="Title"
@@ -1049,12 +1146,9 @@ async function  createMarketplaceListing(page,browser){
                                                     
                                                 }
 
-
-
-                                                await page.waitForSelector(".x9f619.x1n2onr6.x78zum5.xdt5ytf.x193iq5w.xeuugli.x2lah0s.x1t2pt76.x1xzczws.x1cvmir6.x1vjfegm.xwn1f64")
-                                    
-
-                                                const mrktplcform= await page.$$(".x9f619.x1n2onr6.x78zum5.xdt5ytf.x193iq5w.xeuugli.x2lah0s.x1t2pt76.x1xzczws.x1cvmir6.x1vjfegm.xwn1f64");
+// ******************************************************There could be something here ***************************
+                                                // await page.waitForSelector(".x9f619.x1n2onr6.x78zum5.xdt5ytf.x193iq5w.xeuugli.x2lah0s.x1t2pt76.x1xzczws.x1cvmir6.x1vjfegm.xwn1f64")
+                                                // const mrktplcform= await page.$$(".x9f619.x1n2onr6.x78zum5.xdt5ytf.x193iq5w.xeuugli.x2lah0s.x1t2pt76.x1xzczws.x1cvmir6.x1vjfegm.xwn1f64");
 
                                                 // console.log(" mrktplcform " )
                                                 // console.log("here is the number of marketplaceforms Classes  " + mrktplcform.length);
@@ -1094,63 +1188,6 @@ async function  createMarketplaceListing(page,browser){
                                                     console.log("no Category INput found: " ,   " categoryInputHandle")
                                                 }
 
-                                                // for(const labeldata of categorylabels){
-                                                //      console.log("Here is the Category Labels Inner HTML " + "/n" + labeldata);
-
-                                                // }
-
-
-                                                // const categorybuttons=await page.$$("label[aria-label='Category']");
-
-                                                // console.log("here are the cateogry Buttons  "+ categorybuttons, "   " + "And here is the catogry buttons Length : "+ categorybuttons.length )
-
-
-                                                // for(const categorybutton of categorylabels){
-
-
-
-
-
-
-
-
-
-                                                // const inputElement = await page.evaluateHandle(label => {
-                                            
-                                                //     const span = Array.from(label.querySelectorAll('span')).find(span => span.textContent.includes('Category'));           
-
-                                                //     return  span? span.outerHTML : null
-                                                
-                                                // }, categorybutton);
-                                                
-
-                                                // // Extract input element (convert JSHandle to ElementHandle)
-                                                // const inputasElement =await inputElement.asElement(); // Convert to ElementHandle
-                                                
-                                                
-
-                                                // const spanText = await inputElement.jsonValue(); // Convert it into a usable value
-
-
-                                                // console.log("Category INput ASElement Label ",inputasElement);
-                                                // console.log("Category INput Element Label ", inputElement   )
-
-
-                                                // console.log("Category INput SPAN TEXT Element Label ", spanText   )
-
-                                                                                                    
-                                                // if(spanText===null){
-                                                //     // console.log("no Available Category Button Label to click")
-                                                // }
-                                                // else{
-                                                //     // console.log("About to Click on the Category Label")
-                                                    
-                                                //     // await categorybutton.click();
-
-                                                //     // console.log("Already Clicked on the Category Label")
-                                                    
-                                                    
-                                                // }
 
 
                                                                             
@@ -1205,7 +1242,7 @@ async function  createMarketplaceListing(page,browser){
 
                                                         // wait for 30 seconds before starting to scroll the joined groups 
                                                         await page.evaluate(()=>{
-                                                            return new Promise(resolve => setTimeout(resolve, 5000))
+                                                            return new Promise(resolve => setTimeout(resolve, 3000))
                                                         }); 
                                                     } 
 
@@ -1305,83 +1342,6 @@ async function  createMarketplaceListing(page,browser){
                                                 console.log(`number of Condition   Labels =  :-" ${categorylabels.length}`)
 
 
-                                                // for(const labeldata of conditionlabels){
-                                                //      console.log("Here is the Conditons Labels Inner HTML " + "/n" + labeldata);
-
-                                                // }
-
-
-                                                // const categorybuttons=await page.$$("label[aria-label='Category']");
-
-                                                // console.log("here are the cateogry Buttons  "+ categorybuttons, "   " + "And here is the catogry buttons Length : "+ categorybuttons.length )
-
-
-                                                // for(const categorybutton of categorylabels){
-
-
-
-
-
-
-
-
-
-                                                //     const inputElement = await page.evaluateHandle(label => {
-                                                
-                                                //         const span = Array.from(label.querySelectorAll('span')).find(span => span.textContent.includes('Category'));           
-   
-                                                //         return  span? span.outerHTML : nullF
-                                                   
-                                                //     }, categorybutton);
-                                                    
-
-                                                //     // Extract input element (convert JSHandle to ElementHandle)
-                                                //     const inputasElement =await inputElement.asElement(); // Convert to ElementHandle
-                                                    
-                                                    
-
-                                                //     const spanText = await inputElement.jsonValue(); // Convert it into a usable value
-
-
-                                                //     console.log("Category INput ASElement Label ",inputasElement);
-                                                //     console.log("Category INput Element Label ", inputElement   )
-
-
-                                                //     console.log("Category INput SPAN TEXT Element Label ", spanText   )
-
-                                                                                                        
-                                                //     if(spanText===null){
-                                                //         console.log("no Available Category Button Label to click")
-                                                //     }
-                                                //     else{
-                                                //         console.log("About to Click on the Category Label")
-                                                        
-                                                //         await categorybutton.click();
-
-                                                //         console.log("Already Clicked on the Category Label")
-                                                        
-                                                        
-                                                //     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1428,11 +1388,11 @@ async function  createMarketplaceListing(page,browser){
 
                                                     
                                                     // await page.waitForFunction()
-                                                    await page.waitForSelector('div[role=option]')
+                                                    // await page.waitForSelector('div[role="option"]')
 
-                                                    const options=await page.$$('div[role=option]');
+                                                    const options=await page.$$('div[role="option"]');
 
-                                                    // console.log("here are the options " + options);
+                                                    console.log("here are the options " + options.length);
 
                                                     for(const option of options){
 
@@ -1446,12 +1406,12 @@ async function  createMarketplaceListing(page,browser){
                                                                 // Fill the input with text
                                                                 await optionhandle.click();
 
-                                                                console.log("Already clicked the select Condition" )                                                
+                                                                // console.log("\n\n\nAlready clicked the select Condition" )                                                
                                                                 // console.log("here are the details the Selected options " + selectoption.outerHTML); // Output the details for debugging
                                                                 console.log("Selected Condition Options cliked  successfully.");
                                                             }
                                                             else{
-                                                                // console.log("no Conditon Option Selected Option")
+                                                                // console.log("\n\n\n no Conditon Option Selected Option ", selectoption.innerHTML, "and ", data.condition  )
                                                             }                                            
                     
 
@@ -1463,6 +1423,7 @@ async function  createMarketplaceListing(page,browser){
 
                                                     }
                                                     
+                                                    console.log("\n\n\n Just finished the CONDITION fillings ")
 
                                                     await page.screenshot({path:path.join(marketplacelistingimgs, "addimagesstep.png"),timeout:60000})
 
@@ -1508,44 +1469,44 @@ async function  createMarketplaceListing(page,browser){
 
 
 
-                                                    //Select the Product Tags Element and fill it with the Product Tags
-                                                    await page.waitForSelector('//label[.//span[text()="Product tags"]]//div//div//div//textarea');
+                            // ***********************Remove tags for US Accounts ***************//Select the Product Tags Element and fill it with the Product Tags
+                                                    // await page.waitForSelector('//label[.//span[text()="Product tags"]]//div//div//div//textarea');
                                     
 
 
-                                                    console.log("here textareas TEXT AREAS SPACE For Product Tags +   formattedDescription ");
+                                                    // console.log("here textareas TEXT AREAS SPACE For Product Tags +   formattedDescription ");
                                                     
 
-                                                    await page.click('//label[.//span[text()="Product tags"]]//div//div//div//textarea');
+                                                    // await page.click('//label[.//span[text()="Product tags"]]//div//div//div//textarea');
 
 
-                                                    console.log("Already Clicked on the Product Text Areas text Area")
+                                                    // console.log("Already Clicked on the Product Text Areas text Area")
 
 
 
-                                                    for(const productTag of formattedTags){
+                                                    // for(const productTag of formattedTags){
     
-                                                        await page.type('//label[.//span[text()="Product tags"]]//div//div//div//textarea', productTag, { delay: 15 });
+                                                    //     await page.type('//label[.//span[text()="Product tags"]]//div//div//div//textarea', productTag, { delay: 15 });
     
-                                                        await page.keyboard.press('Enter');
+                                                    //     await page.keyboard.press('Enter');
 
-                                                        // await for More Details to Expand after .click();
-                                                        await page.evaluate(()=>{
-                                                            return new Promise(resolve=> setTimeout(resolve, 100))
-                                                        })
-                                                        // console.log("just finished adding on prodcut Tag, now Going to next Product Tag")
-                                                    }
+                                                    //     // await for More Details to Expand after .click();
+                                                    //     await page.evaluate(()=>{
+                                                    //         return new Promise(resolve=> setTimeout(resolve, 100))
+                                                    //     })
+                                                    //     // console.log("just finished adding on prodcut Tag, now Going to next Product Tag")
+                                                    // }
 
                                                     
-                                                    // console.log("\n\n Successffully clicked and fillled the Product Tags  Input text Areas \n\n")
+                                                    // // console.log("\n\n Successffully clicked and fillled the Product Tags  Input text Areas \n\n")
 
 
 
 
 
-                                                    // await page.type('//label[.//span[text()="Product tags"]]//div//div//div//textarea)', formattedDescription, { delay: 20 });
+                                                    // // await page.type('//label[.//span[text()="Product tags"]]//div//div//div//textarea)', formattedDescription, { delay: 20 });
 
-                                                    console.log("Successffully clicked and fillled the Product Tags ARea Input text Areas ")
+                                                    // console.log("Successffully clicked and fillled the Product Tags ARea Input text Areas ")
 
 
 
@@ -1564,11 +1525,17 @@ async function  createMarketplaceListing(page,browser){
 
 
 
+                                                    //Hide from friends 
+
+                                                    await page.waitForTimeout(4000)
+                                                    // console.log("\n About to Turn On Hide from Friends...");
+
+                                                    // //hide from friends
+                                                    // await page.locator("xpath=//div[@role='button' and .//span[text()='Hide from friends']]").click();
 
 
-
-
-
+                                                    // //Wait 2 more seconds then continue
+                                                    // await page.waitForTimeout(2000)
 
 
 
@@ -1749,9 +1716,127 @@ async function  createMarketplaceListing(page,browser){
     
                                                     //wait for 30 seconds after clicking the Next button before taking screenshot
                                                     await page.evaluate(()=>{
-                                                        return new Promise(resolve=> setTimeout(resolve,2000))
+                                                        return new Promise(resolve=> setTimeout(resolve,5000))
                                                     })
+
+
+                                                    console.log("\nFirst Next Button Clicked  Now looking for the Next Next Button\n\n")
     
+
+
+
+                                                    await page.waitForSelector("div[aria-label=Next]");
+
+                                                    const secondnextbuttons=await page.$$("div[aria-label=Next]")
+    
+                                                    console.log("Next Button ElementHandles List              " + secondnextbuttons)
+    
+                                                    for(const nextbutton of secondnextbuttons){
+    
+                                                        console.log("Next Button ElementHandle inside for loop              " + nextbutton)
+                                                        
+                                                        await page.evaluateHandle(async(buttonHandle)=>{
+                                                            
+                                                            const span=buttonHandle.querySelector("span");
+    
+                                                            // console.log("span for next button "+ buttonHandle + span.textContent)
+    
+    
+                                                            if(span && span.textContent==="Next"){
+    
+                                                                // Wait for the popup container to appear
+                                                                // await page.waitForSelector('.x78zum5.xdt5ytf.xe8uvvx.x193iq5w');
+    
+                                                                // Select the popup container
+                                                                const popupContainer = document.querySelector('.x78zum5.xdt5ytf.xe8uvvx.x193iq5w');
+    
+                                                                console.log("Here is the pop up container  "   +  "   \n" + popupContainer)
+    
+                                                                if (popupContainer) {
+    
+                                                                    // Select the buttons inside the popup container that have the aria-label "Close"
+                                                                    const popupbuttons= Array.from(popupContainer.querySelectorAll( `div[aria-label="Close"]`));
+    
+                                                                    // Optional: Do something with the buttons, like clicking the first one
+                                                                    if (popupbuttons.length > 0) {
+    
+                                                                        console.log("here is the CRAZY POP UP  " + popupbuttons.length);
+                                                                        
+                                                                        for(let i=0; i<popupbuttons.length; i++ ) {
+    
+                                                                            console.log("EACH LOOP OF CLOSE POPUP BUTTON  " + popupbuttons[i]);
+                                                                            
+                                                                            await popupbuttons[i].click()
+    
+                                                                            console.log("EACH LOOP OF CLOSE POPUP BUTTON  EACH POPUP BUTTON JUST CLICKED  " + popupbuttons[i]);
+    
+                                                                            //wait for 30 seconds after clicking the Next button before taking screenshot
+                                                                            await new Promise(resolve=> setTimeout(resolve,10))
+                                                                        }
+    
+                                                                        const availablepopups=Array.from(document.querySelectorAll( `div[aria-label="Close"]`));
+    
+    
+                                                                        if(availablepopups.length>0){
+                                                                            //wait for 30 seconds after clicking the Next button before taking screenshot
+                                                                            await  new Promise(resolve=> setTimeout(resolve,2000))
+                                                                        }
+    
+                                                                        await buttonHandle.click();
+                                                                
+                                                                        console.log("nextbuttonclicked   CLICKED"+ buttonHandle + span.textContent)
+        
+                                                                        //wait for 30 seconds after clicking the Next button before taking screenshot
+                                                                        await  new Promise(resolve=> setTimeout(resolve,2000))
+                                                                    }
+                                                                    else{
+                                                                        console.log("NO POP UP LISTE IN THE POP CONTAINER " );
+                                                            
+                                                                        await buttonHandle.click();
+                                                                
+                                                                        console.log("nextbuttonclicked   CLICKED"+ buttonHandle + span.textContent)
+        
+                                                                        //wait for 30 seconds after clicking the Next button before taking screenshot
+                                                                        await  new Promise(resolve=> setTimeout(resolve,2000))
+                                                            
+                                                                    }
+                                                                } else {
+                                                                    console.log('Popup container not found');
+    
+    
+    
+                                                                    await buttonHandle.click();
+                                                                
+                                                                    console.log("nextbuttonclicked   CLICKED"+ buttonHandle + span.textContent)
+    
+    
+                                                                    //wait for 30 seconds after clicking the Next button before taking screenshot
+                                                                    await  new Promise(resolve=> setTimeout(resolve,2000))
+                                                                }
+    
+    
+                                                            }
+                                                            else{
+                                                                console.log("Next Button for listing Not found");
+                                                            }
+    
+    
+                                                        }, nextbutton )
+
+
+                                                    }
+
+
+
+
+
+
+
+
+
+
+
+
 
                                                 }catch(error){
                                                     if(error.name='TimeoutError'){
