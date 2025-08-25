@@ -138,8 +138,18 @@ async function runAutomation() {
     
     
                 function getAppDataDir(appName = 'ali-multiproFbautoposter-us-linwinmac') {
-
                     const app="app/data"
+
+
+                    // Ensure folder exists
+                    if (!fs.existsSync(app)) {
+                        fs.mkdirSync(app, { recursive: true });
+                        console.log("No App folder Found Just Created a New App  at ", app);
+                    }
+                    console.log("App Dir Found, Continue...")
+                
+
+
                     if (platform === 'win32') {
                         return path.join(app, appName);
                     }
