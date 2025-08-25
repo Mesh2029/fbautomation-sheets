@@ -152,10 +152,11 @@ async function runAutomation() {
 
                     if (platform === 'win32') {
                         return path.join(app, appName);
-                    }
-        
-                    // Linux and macOS
+                    }else{
+                        // Linux and macOS
                         return path.join(app, appName);
+
+                    }
                 }
         
                 const appDir = getAppDataDir(); // e.g., ~/.config/fbyebot or %APPDATA%\fbyebot
