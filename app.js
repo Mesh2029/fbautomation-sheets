@@ -135,160 +135,28 @@ async function runAutomation() {
         
         
         
-                const dataFile = path.join(os.homedir(), '.eingerichtet.json');
-                const max = 14
-        
-                function getTageSince(dateStr) {
-                    const einrichten = new Date(dateStr);
-                    const now = new Date();
-                    const nowUTC=new Date(now.toISOString())
-                    const diffZeit = nowUTC.getTime() - einrichten.getTime();
-        
-                    // console.log("Here isthe einrichten Uhrzeit ", einrichten),
-                    // console.log("Here isthe JetztUTC Uhrzeit ", nowUTC),
-                    // console.log("here is the zeit  unterschied ", diffZeit/(1000*60*60*24))
-                    // return Math.floor(diffZeit / (1000 * 60 * 60 * 24));
-        
-                    
-                    return Math.floor(diffZeit / (1000 * 60 * 60 * 24));
-                    
-                }
-
-
-
-
-  // ************************just did some changes here commented out ***********************************
-        
-                // async function checkProbeZeit() {
-                //     if (!fs.existsSync(dataFile)) {
-                //         // First run: store the current datea
-                //         const data = { einrichtenOn: new Date().toISOString() };
-                //         fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
-                //         fs.chmodSync(dataFile,0o755)
-                //         return true;
-                //     }
-
-            
-        
-                //     // File exists: check the date
-                //     const raw = fs.readFileSync(dataFile);
-                //     const { einrichtenOn } = JSON.parse(raw);
-                //     const tagePassed = getTageSince(einrichtenOn);
-        
-                //     if (tagePassed > max) {
-                //         console.log(`⛔ CRITICAL ERROR NUMBER (${tagePassed} ). PLEASE CONTACT DEVELOPER!.`);
-                //         console.log(`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER!. Email: yegonk247@gmail.com or phone: +254706727834`);
-        
-                //         return false;
-                //     }
-        
-                //         console.log(`✅ VALID NUMBER.... ${tagePassed} and ${max}`);
-                //         console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED`);
-        
-        
-                //     return true;
-                // }
-        
-        
-                // const probeOk = await checkProbeZeit();
-                
-                // if (!probeOk) {
-                //     return (`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER.`);
-                // }
-        
-                // console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED MAKE RUN`);
-        
-        
-  // ************************just did some changes here commented out ***********************************
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                // Detect platform and set Chrome path accordingly
-                function getChromeExecutablePath() {
-        
-                    const platform = os.platform();
-        
-                    if (platform === 'win32') {
-                        // Windows
-                        const winChromePaths = [
-                            "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-                            "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
-                        ];
-        
-                        for (const p of winChromePaths) {
-                            if (fs.existsSync(p)) return p;
-                        }
-                    }
-                    else if (platform === 'darwin') {
-                        // macOS
-                        return "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-                    }
-                    else if (platform === 'linux') {
-                        // Linux
-                        const linuxChromePaths = [
-                            '/usr/bin/google-chrome',
-                            '/usr/bin/chromium-browser',
-                            '/usr/bin/chromium'
-                        ];
-                
-                        for (const p of linuxChromePaths) {
-                            console.log("path to chrome ", p)
-                            if (fs.existsSync(p)) return p;
-                        }
-                    }
-        
-                    return null; // fallback if none found
-                }
-        
-                const chromePath = getChromeExecutablePath();
-                console.log(chromePath);
-        
-                if (!chromePath) {
-        
-                    console.error("❌ Could not find Chrome/Chromium on this system.");
-                    process.exit(1);
-                }
-        
-        
+    
+    
                 function getAppDataDir(appName = 'ali-multiproFbautoposter-us-linwinmac') {
-                    const home = os.homedir();
-        
+
+                    const app="app/data"
                     if (platform === 'win32') {
-                        return path.join(process.env.APPDATA || path.join(home, 'AppData', 'Roaming'), appName);
+                        return path.join(app, appName);
                     }
         
                     // Linux and macOS
-                    return path.join(home, '.config', appName);
+                        return path.join(app, appName);
                 }
         
                 const appDir = getAppDataDir(); // e.g., ~/.config/fbyebot or %APPDATA%\fbyebot
 
 
-                 // Ensure folder exists
-                 if (!fs.existsSync(appDir)) {
-                     fs.mkdirSync(appDir, { recursive: true });
+                // Ensure folder exists
+                if (!fs.existsSync(appDir)) {
+                    fs.mkdirSync(appDir, { recursive: true });
                     console.log("No AppDir Found Just Created a New AppDir  at ", appDir);
                 }
                 console.log("AppDir Found, Continue...")
-                fs.chmodSync(appDir,0o755)
             
         
                 const chromeUserDataDir = path.join(appDir, "fbyebotChromeProfiles")
@@ -299,61 +167,60 @@ async function runAutomation() {
                 }
             
                 console.log("chromeUserDataDir path Found at "  , chromeUserDataDir, " Continue... ")
-                fs.chmodSync(chromeUserDataDir,0o755)
             
 
 
 
-                const home=os.homedir();
 
 
-                // Where to store user files (can be current dir or ~/.config/appname)
-                const envDir = path.join(home, "productpaths-per-locationChanger");
+                // // Where to store user files (can be current dir or ~/.config/appname)
+                // const envDir = path.join(app, "productpaths-per-locationChanger");
 
-                // Create the directory if it's missing
-                if (!fs.existsSync(envDir)) {
-                    fs.mkdirSync(envDir, { recursive: true });
-                    console.log(`\nCreated directory for allproducts root folder paths: ${envDir}`);
-                }
-                fs.chmodSync(envDir,0o755)
+                // // Create the directory if it's missing
+                // if (!fs.existsSync(envDir)) {
+                //     fs.mkdirSync(envDir, { recursive: true });
+                //     console.log(`\nCreated directory for allproducts root folder paths: ${envDir}`);
+                // }
+                // // Where to store user files (can be current dir or ~/.config/appname)
+                // const envPath = path.join(envDir ,'.env');
 
 
-                // Where to store user files (can be current dir or ~/.config/appname)
-                const envPath = path.join(envDir ,'.env');
+
                 const cookiesPath = path.join(appDir, 'cookies.json');  
                 
-               
+            
                 // Create default .env if missing
                 if (!fs.existsSync(envPath)) {
                     fs.writeFileSync(envPath, 'root="path to your cabinets folder"');
                     console.log('\n⛔ .env file created. Go to your home folder then search for allproductsrootpathfolder then go to the  .env  file and then kindly fill up the path to your products folder.');
         
                 }
-                fs.chmodSync(envPath,0o755)
                 
                 // Create default cookies.json if missing
                 if (!fs.existsSync(cookiesPath)) {
                     fs.writeFileSync(cookiesPath, JSON.stringify([], null, 2));
                     console.log('\n ⛔cookies.json file created. go to your home folder then search .config or APPDATA(if on windows), then click it and look for folder called fbyebot-us-2.0 click it then you can log in to facebook copy and paste the cookies here in the cookie.json  \n\n');
                 }
-                fs.chmodSync(cookiesPath,0o755)
                 
                 // Load env
                 dotenv.config({ path: envPath });
                 
-                // Use cookies.json
-                // const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf-8'));
+
+                // Try to load the cookies. The file should be put in this directory when you deploy.
+                try {
+                    const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf-8'));
+                    
+                    console.log("Cookies loaded successfully.  ", cookies);
+                } catch (error) {
+                    console.error("❌ Could not load cookies file. Error:", error.message);
+                }
+
         
-        
-                // Load cookies from the cookie.json file
-                const cookies = JSON.parse(fs.readFileSync(cookiesPath));
-        
-                        
         
                 const cacheDir = path.join(appDir, 'usercache', 'images');
         
                 if (!fs.existsSync(cacheDir)) {
-                  fs.mkdirSync(cacheDir, { recursive: true });
+                fs.mkdirSync(cacheDir, { recursive: true });
                 }
                 
                 // const screenshotPath = path.join(cacheDir, 'home.png');
@@ -363,10 +230,10 @@ async function runAutomation() {
                 const marketplacelistingimgs = path.join(appDir, 'marketplacelistingimgs');
         
                 if (!fs.existsSync(marketplacelistingimgs)) {
-                  fs.mkdirSync(marketplacelistingimgs, { recursive: true });
+                fs.mkdirSync(marketplacelistingimgs, { recursive: true });
                 }
         
-        
+            
 
 
 
@@ -501,7 +368,7 @@ async function runAutomation() {
                 
                 const browser= await chromium.launchPersistentContext(userDataDir, {
                   headless: false,
-                  executablePath: chromePath,
+                //   executablePath: chromePath,
                     args: [
                       '--disable-notifications',
                       '--disable-blink-features=AutomationControlled',
