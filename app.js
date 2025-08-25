@@ -138,7 +138,7 @@ async function runAutomation() {
     
     
                 function getAppDataDir(appName = 'ali-multiproFbautoposter-us-linwinmac') {
-                    const app="/app/data"
+                    const app="/data"
 
 
                     // Ensure folder exists
@@ -378,7 +378,7 @@ async function runAutomation() {
                 const userDataDir = path.join(chromeUserDataDir,userprofiles[profileIndex])
                 
                 const browser= await chromium.launchPersistentContext(userDataDir, {
-                  headless: false,
+                  headless: true,
                 //   executablePath: chromePath,
                     args: [
                       '--disable-notifications',
