@@ -184,16 +184,16 @@ async function runAutomation() {
 
 
 
-                // // Where to store user files (can be current dir or ~/.config/appname)
-                // const envDir = path.join(app, "productpaths-per-locationChanger");
+                // Where to store user files (can be current dir or ~/.config/appname)
+                const envDir = path.join(app, "productpaths-per-locationChanger");
 
-                // // Create the directory if it's missing
-                // if (!fs.existsSync(envDir)) {
-                //     fs.mkdirSync(envDir, { recursive: true });
-                //     console.log(`\nCreated directory for allproducts root folder paths: ${envDir}`);
-                // }
-                // // Where to store user files (can be current dir or ~/.config/appname)
-                // const envPath = path.join(envDir ,'.env');
+                // Create the directory if it's missing
+                if (!fs.existsSync(envDir)) {
+                    fs.mkdirSync(envDir, { recursive: true });
+                    console.log(`\nCreated directory for allproducts root folder paths: ${envDir}`);
+                }
+                // Where to store user files (can be current dir or ~/.config/appname)
+                const envPath = path.join(envDir ,'.env');
 
 
 
