@@ -138,7 +138,7 @@ async function runAutomation() {
     
     
                 function getAppDataDir(appName = 'ali-multiproFbautoposter-us-linwinmac') {
-                    const app="app/data"
+                    const app="/app/data"
 
 
                     // Ensure folder exists
