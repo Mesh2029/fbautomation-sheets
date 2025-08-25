@@ -153,54 +153,60 @@ async function runAutomation() {
                     return Math.floor(diffZeit / (1000 * 60 * 60 * 24));
                     
                 }
+
+
+
+
+  // ************************just did some changes here commented out ***********************************
         
-                async function checkProbeZeit() {
-                    if (!fs.existsSync(dataFile)) {
-                        // First run: store the current datea
-                        const data = { einrichtenOn: new Date().toISOString() };
-                        fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
-                        fs.chmodSync(dataFile,0o755)
-                        return true;
-                    }
+                // async function checkProbeZeit() {
+                //     if (!fs.existsSync(dataFile)) {
+                //         // First run: store the current datea
+                //         const data = { einrichtenOn: new Date().toISOString() };
+                //         fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+                //         fs.chmodSync(dataFile,0o755)
+                //         return true;
+                //     }
 
             
         
-                    // File exists: check the date
-                    const raw = fs.readFileSync(dataFile);
-                    const { einrichtenOn } = JSON.parse(raw);
-                    const tagePassed = getTageSince(einrichtenOn);
+                //     // File exists: check the date
+                //     const raw = fs.readFileSync(dataFile);
+                //     const { einrichtenOn } = JSON.parse(raw);
+                //     const tagePassed = getTageSince(einrichtenOn);
         
-                    if (tagePassed > max) {
-                        console.log(`⛔ CRITICAL ERROR NUMBER (${tagePassed} ). PLEASE CONTACT DEVELOPER!.`);
-                        console.log(`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER!. Email: yegonk247@gmail.com or phone: +254706727834`);
+                //     if (tagePassed > max) {
+                //         console.log(`⛔ CRITICAL ERROR NUMBER (${tagePassed} ). PLEASE CONTACT DEVELOPER!.`);
+                //         console.log(`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER!. Email: yegonk247@gmail.com or phone: +254706727834`);
         
-                        return false;
-                    }
+                //         return false;
+                //     }
         
-                        console.log(`✅ VALID NUMBER.... ${tagePassed} and ${max}`);
-                        console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED`);
-        
-        
-                    return true;
-                }
+                //         console.log(`✅ VALID NUMBER.... ${tagePassed} and ${max}`);
+                //         console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED`);
         
         
+                //     return true;
+                // }
         
         
-        
-        
-        
-        
-        
-        
-        
-                const probeOk = await checkProbeZeit();
+                // const probeOk = await checkProbeZeit();
                 
-                if (!probeOk) {
-                    return (`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER.`);
-                }
+                // if (!probeOk) {
+                //     return (`⛔ CRITICAL ERROR ENCOUNTERED!! ⛔. PLEASE CONTACT DEVELOPER.`);
+                // }
         
-                console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED MAKE RUN`);
+                // console.log(`✅ NO CRITICAL ERRORS ENCOUNTERED MAKE RUN`);
+        
+        
+  // ************************just did some changes here commented out ***********************************
+        
+        
+        
+        
+        
+        
+        
         
         
         
