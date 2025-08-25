@@ -159,8 +159,11 @@ async function runAutomation() {
                         // First run: store the current datea
                         const data = { einrichtenOn: new Date().toISOString() };
                         fs.writeFileSync(dataFile, JSON.stringify(data, null, 2));
+                        fs.chmodSync(dataFile,0o755)
                         return true;
                     }
+
+            
         
                     // File exists: check the date
                     const raw = fs.readFileSync(dataFile);
@@ -259,7 +262,7 @@ async function runAutomation() {
                 }
         
         
-                function getAppDataDir(appName = 'salah-multiproFbautoposter-us-linwinmac') {
+                function getAppDataDir(appName = 'ali-multiproFbautoposter-us-linwinmac') {
                     const home = os.homedir();
         
                     if (platform === 'win32') {

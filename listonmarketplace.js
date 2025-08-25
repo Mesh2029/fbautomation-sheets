@@ -13,7 +13,7 @@ async function  createMarketplaceListing(page,browser){
 
     try{
         
-        function getAppDataDir(appName = 'salah-multiproFbautoposter-us-linwinmac') {
+        function getAppDataDir(appName = 'ali-multiproFbautoposter-us-linwinmac') {
             const home = os.homedir();
 
             if (platform === 'win32') {
