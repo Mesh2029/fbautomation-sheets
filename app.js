@@ -185,7 +185,7 @@ async function runAutomation() {
 
 
                 // Where to store user files (can be current dir or ~/.config/appname)
-                const envDir = path.join(app, "productpaths-per-locationChanger");
+                const envDir = path.join(appDir, "productpaths-per-locationChanger");
 
                 // Create the directory if it's missing
                 if (!fs.existsSync(envDir)) {
