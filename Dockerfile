@@ -1,29 +1,9 @@
-# FROM mcr.microsoft.com/playwright/python:v1.44.0
-
-# # Set the working directory inside the container
-# WORKDIR /app
-
-# # Copy the application files into the container
-# COPY . .
-
-# # Install your Node.js dependencies
-# RUN npm install
-
-# # Command to run your application when the container starts
-# CMD ["node", "app.js"]  
-
-
-
-
-
-
-
 
 # Choose a Node.js base image
 FROM node:18-slim
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /tmp
 
 # Set the PLAYWRIGHT_BROWSERS_PATH environment variable to a writable directory
 RUN PLAYWRIGHT_BROWSERS_PATH=/tmp/playwright npx playwright install --with-deps
