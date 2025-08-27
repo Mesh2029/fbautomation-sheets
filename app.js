@@ -315,8 +315,9 @@ async function runAutomation() {
                 console.log("\n Here isthe Index to select Profile Index " + profileIndex)
         
 
-                console.log('\n 🚀 Launching Chrome with Playwright Persistent Storage... First here is the Chrome Path  '   ,chromePath , 'Here is the user--data-dir ' + chromeUserDataDir, "and here is the profile-diretory  " + userprofiles[profileIndex]);
+                // console.log('\n 🚀 Launching Chrome with Playwright Persistent Storage... First here is the Chrome Path  '   ,chromePath , 'Here is the user--data-dir ' + chromeUserDataDir, "and here is the profile-diretory  " + userprofiles[profileIndex]);
 
+                console.log('\n 🚀 Launching Chrome with Playwright Persistent Storage... First here is the Chrome Path  '   , 'Here is the user--data-dir ' + chromeUserDataDir, "and here is the profile-diretory  " + userprofiles[profileIndex]);
 
 
 
