@@ -47,8 +47,15 @@ COPY . .
 # Install your Node.js dependencies
 RUN npm install
 
-# Download the Chromium browser, which you already did.
-RUN npx playwright install chromium
+
+# Install ALL Playwright dependencies required for the OS
+RUN npx playwright install-deps
 
 # Command to run your application when the container starts
 CMD ["node", "app.js"]
+
+
+
+# Download the Chromium browser
+RUN npx playwright install chromium
+
