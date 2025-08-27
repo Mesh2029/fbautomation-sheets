@@ -11,3 +11,7 @@ npx -y playwright@latest install --with-deps chromium
 # Install Node.js modules from package.json
 echo "Installing Node.js modules..."
 npm install
+
+
+
+
