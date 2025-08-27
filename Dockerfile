@@ -26,7 +26,8 @@ FROM node:18-slim
 WORKDIR /app
 
 # Set the PLAYWRIGHT_BROWSERS_PATH environment variable to a writable directory
-ENV PLAYWRIGHT_BROWSERS_PATH=/tmp/playwright
+RUN PLAYWRIGHT_BROWSERS_PATH=/tmp/playwright npx playwright install --with-deps
+# ENV PLAYWRIGHT_BROWSERS_PATH=/tmp/playwright
 
 # Copy package files and install dependencies
 COPY package*.json ./
@@ -34,7 +35,7 @@ RUN npm install
 
 # Install Playwright browsers into the specified path
 # The --with-deps flag ensures all necessary OS dependencies are also installed
-RUN npx playwright install --with-deps
+# RUN npx playwright install --with-deps
 
 # Copy the rest of your application code
 COPY . .
