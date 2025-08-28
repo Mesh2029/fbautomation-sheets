@@ -380,7 +380,7 @@ async function runAutomation() {
                 
                 const browser= await chromium.launchPersistentContext(userDataDir, {
                   headless: true,
-                //   executablePath: chromePath,
+                  //executablePath: chromePath,
                     args: [
                       '--disable-notifications',
                       '--disable-blink-features=AutomationControlled',
@@ -431,15 +431,28 @@ async function runAutomation() {
                 // const browser = await chromium.launch();
 
                 // Create a new browser context (like an incognito window)
-                const context = await browser.newContext();
+                // const context = await browser.newContext();
 
                 // Add the cookies to the context before navigating
                 // The cookies variable should be an array of cookie objects
                 // Each object must have name, value, domain, and path properties.
-                await context.addCookies(cookies);
+                await browser.addCookies(cookies);
                 
+
+
+
+                //Now, create a new page within this context. The page will inherit the cookies.
+                const page = await browser.newPage();
+
+                // You can now proceed with your automation logic using the 'page' object.
+                console.log("Successfully created a new page in the persistent context!");
+
+
+
+
+
                 // Create a new page within this context
-                const page = await context.newPage();
+                // const page = await context.newPage();
 
                 console.log('🧭 Page:', page.url());
                 
