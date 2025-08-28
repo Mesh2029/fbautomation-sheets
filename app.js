@@ -1,3 +1,11 @@
+// A simple server to receive the webhook from AppSheet and run your automation script.
+const express = require('express');
+const app = express();
+// Cloud Run and Railway provide this PORT environment variable.
+const port = process.env.PORT || 8080;
+
+
+
 
 // Launch the browser and open a new blank page
 // app.js
@@ -426,10 +434,7 @@ async function runAutomation() {
                 // It should be a JSON string, so you must parse it first.
                 const cookies = JSON.parse(cookiesEnvVar);
 
-                // (async () => {
-                // Launch a new browser instance
-                // const browser = await chromium.launch();
-
+               
                 // Create a new browser context (like an incognito window)
                 // const context = await browser.newContext();
 
@@ -438,8 +443,6 @@ async function runAutomation() {
                 // Each object must have name, value, domain, and path properties.
                 await browser.addCookies(cookies);
                 
-
-
 
                 //Now, create a new page within this context. The page will inherit the cookies.
                 const page = await browser.newPage();
@@ -1024,4 +1027,26 @@ async function runAutomation() {
 }
 
 // Start the loop
-runAutomation();
+// runAutomation();
+
+
+
+
+// This is the server part. It's the "cashier" waiting for AppSheet.
+// The '/trigger' route is what AppSheet will call.
+app.post('/startposting', async (req, res) => {
+    console.log('✅ Webhook request received from AppSheet! Starting automation...');
+
+    try {
+        // Here, we call your automation script.
+        await runAutomation();
+        res.status(200).send('Automation task has been triggered successfully.');
+    } catch (error) {
+        console.error('❌ Error triggering automation:', error);
+        res.status(500).send('An error occurred while attempting to trigger the automation.');
+    }
+});
+
+app.listen(port, () => {
+  console.log(`Server listening for webhooks on port ${port}`);
+});
