@@ -10,7 +10,7 @@ COPY package*.json ./
 RUN npm install
 
 # ARG to bust Docker's cache for the next command
-ARG CACHE_BUST=2
+ARG CACHE_BUST=3
 
 
 # This command should be run *after* npm install
