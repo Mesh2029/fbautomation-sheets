@@ -1897,7 +1897,7 @@ async function  createMarketplaceListing(page,browser){
                                                         await page.evaluate((el) => (el.scrollIntoView()),publishbutton);
 
 
-                                                        await publishbutton.click();
+                                                        // await publishbutton.click();
     
                                                         console.log(" I just clickedo n the the  PUBLISH BUTTON ")
     
@@ -2242,7 +2242,7 @@ async function  createMarketplaceListing(page,browser){
                                                             })
                                                         }
 
-                                                        await publishbutton.click();
+                                                        // await publishbutton.click();
 
                                                         console.log(" I just clickedo n the the  PUBLISH BUTTON ")
 
@@ -2254,7 +2254,7 @@ async function  createMarketplaceListing(page,browser){
                                                     else{
                                                         console.log("No POPUP LISTED INSIDE THE POPUP CONTAINER");
                                                         
-                                                        await publishbutton.click();
+                                                        // await publishbutton.click();
 
                                                         console.log(" I just clickedo n the the  PUBLISH BUTTON ")
 
@@ -2268,7 +2268,7 @@ async function  createMarketplaceListing(page,browser){
 
 
 
-                                                    await publishbutton.click();
+                                                    // await publishbutton.click();
 
                                                     console.log(" I just clickedo n the the  PUBLISH BUTTON ")
 

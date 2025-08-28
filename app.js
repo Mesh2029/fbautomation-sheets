@@ -418,12 +418,80 @@ async function runAutomation() {
 
                 });
                 
-                // Continue with automation using `browserContext.pages()[0]` or `browserContext.newPage()`
+                
+
+
+                // Your environment variable containing the cookie data.
+                const cookiesEnvVar = process.env.COOKIES;
+                // It should be a JSON string, so you must parse it first.
+                const cookies = JSON.parse(cookiesEnvVar);
+
+                // (async () => {
+                // Launch a new browser instance
+                // const browser = await chromium.launch();
+
+                // Create a new browser context (like an incognito window)
+                const context = await browser.newContext();
+
+                // Add the cookies to the context before navigating
+                // The cookies variable should be an array of cookie objects
+                // Each object must have name, value, domain, and path properties.
+                await context.addCookies(cookies);
+                
+                // Create a new page within this context
+                const page = await context.newPage();
+
+                console.log('🧭 Page:', page.url());
+                
+                try {
+                    await page.goto('https://www.facebook.com/', { waitUntil: 'domcontentloaded', timeout: 60000 });
+                    
+                    // Wait and click on first result.
+                    await page.waitForSelector("a[aria-label='Home'][role='link']");
+                    
+                    console.log('✅ USING COOKIES sUCCESSFULLY Already logged in to FACEBOOK!');
+                }
+                catch(err) {
+                    if (err.name === "TimeoutError") {
+                        console.log('❌ Not logged in to Facebook! Cookies may be expired EXPIRED.');
+                    } else {
+                        console.error(err);
+                    }
+                }
+
+                // Your main logic here
+                console.log('✅ SURVIVED THE NOT LOGGED IN TIMEOUT ERROR NOW!');
+
+                // await browser.close();
+                // })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Continue with automation using `browserContext.pages()[0]` or `browserContext.newPage()`
                 
 
 
                 //launch new page
-                const page=await browser.newPage();
+                // const page=await browser.newPage();
 
                 await page.setViewportSize  ({width: 1800, height: 900});
                 
@@ -460,134 +528,78 @@ async function runAutomation() {
                 await page.evaluate(async ()=>{
                     return new Promise(resolve => setTimeout(resolve, (8 * 1000)))
                 })
-                // setTimeout(new Promise(resolve)30000)
-                // // find the page with the new-tab URL
-                // for (const context of browser.contexts()) {
-                //     for (const p of context.pages()) {
-                //         if (p.url() === 'chrome://new-tab-page/') {
-                //             console.log('🎯 Found clean launch tab, using this page.');
-                //             page = p;
-                //             break;
-                //         }
-                //     }
-                //     if (page) break;
-                // }
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+                // console.log('🧭 Page:', page.url());
                 
-                // // fallback: if no new-tab-page found, just use the first context
-                // if (!page) {
-                //     console.warn('⚠️ No new-tab page found. Defaulting to new page in first context.');
-                //     const context = browser.contexts()[0];
-                //     page = await context.newPage();
-                // }
-                
-                // // await page.goto('https://facebook.com');
-                
-        
-                
-                
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                
-        
-                // console.log("Here is the needed context ", context)
-                
-                // const page = await context.newPage();
-        
-                console.log('🧭 Page:', page.url());
-                
-                await page.goto('https://www.facebook.com/', { waitUntil: 'domcontentloaded', timeout:60000 });
+                // await page.goto('https://www.facebook.com/', { waitUntil: 'domcontentloaded', timeout:60000 });
         
                 
 
 
-                const url = page.url();
+                // const url = page.url();
                 
-                try{
-                    // await page.wait
+                // try{
+                //     // await page.wait
 
-                    //  Wait and click on first result.
+                //     //  Wait and click on first result.
                 
-                    await page.waitForSelector("a[aria-label='Home'][role='link']")
+                //     await page.waitForSelector("a[aria-label='Home'][role='link']")
             
-                    console.log('✅ Already logged in to FACEBOOK!');
-                }
-                catch(err){
-                    if(err.name==="TimeoutError"){
-                        console.log('❌ Not logged in to Facebook! Kindly Check the Browser and Login');
-                    }
-                }
+                //     console.log('✅ Already logged in to FACEBOOK!');
+                // }
+                // catch(err){
+                //     if(err.name==="TimeoutError"){
+                //         console.log('❌ Not logged in to Facebook! Kindly Check the Browser and Login');
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-                // const page = await browser.newPage();
-                
-                
+                //         // since not logged in load the cookies from the process.env.COOKIES
                         
-                // await page.setExtraHTTPHeaders({ 'Accept-Language': 'en-US' });
-                // await page.emulateTimezone('America/Phoenix');
-                // await page.setGeolocation({ latitude: 33.4484, longitude: -112.0740 });
-        
-        
-        
-                // // Enable popup blocker
-                // await page.setPopupBlockerEnabled(true);
-                
-        
-        
-        
-                // Set screen size.
-        
-        
-                // // // Allow notifications for the page
-                // const context = browser.defaultBrowserContext();
-                // await context.overridePermissions('https://facebook.com/', ['notifications']);
-        
-        
-        
-        
-        
+                //         // / Load cookies from the cookie.json file
+                //         // const cookies = JSON.parse(fs.readFileSync('./cookies/kiprotichkiproperties.json'));
+                //         // const cookies=process.env.COOKIES;
+
+                //         //   // Set the cookies in the page
+                //         // await page.addCookies(...cookies);
+                //         // console.log("Just added the cookies, Should NOw be Logged in ")
+                        
+
+                //     }
+                // }
+
+                // console.log('✅ SURVIVED THE NOT LOGGED IN TIMEOUT ERROR Already logged in to FACEBOOK NOW!');
             
-         
         
-        
-                
         
                 // Load cookies from the cookie.json file
                 // const cookies = JSON.parse(fs.readFileSync('./cookies/kiprotichkiproperties.json'));
@@ -626,11 +638,7 @@ async function runAutomation() {
                 // const cookies = JSON.parse(fs.readFileSync('./cookies/megastrength.json'));
         
         
-        
-        
-        
-        
-        
+  
         
                 try{
         
