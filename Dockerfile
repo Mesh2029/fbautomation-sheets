@@ -9,7 +9,10 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-# Install Playwright browsers into the specified path
+# ARG to bust Docker's cache for the next command
+ARG CACHE_BUST=2
+
+
 # This command should be run *after* npm install
 # The --with-deps flag ensures all necessary OS dependencies are also installed
 RUN npx playwright install --with-deps
