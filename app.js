@@ -5,6 +5,11 @@ const app = express();
 const port = process.env.PORT || 8000;
 console.log(`Application is using port: ${port}`);
 
+// Middleware to parse JSON bodies from incoming requests
+app.use(express.json());
+
+
+
 
 
 // Launch the browser and open a new blank page
