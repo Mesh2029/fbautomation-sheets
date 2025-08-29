@@ -8,9 +8,9 @@ const { timeout, TimeoutError }=require( 'puppeteer');
 const os=require("os");
 const {platform} =require("process");
 // Using CommonJS (most common in Node.js)
+
+
 const axios = require('axios');
-
-
 
 
 
@@ -19,6 +19,18 @@ const APPSHEET_APP_ID = '41aa9d8f-9048-4ab7-ad08-60bac0a43488';
 // const APPSHEET_TABLE_ID = 'wafbproducts';
 const APPSHEET_TABLE_ID = 'Sheet1';
 const APPSHEET_API_KEY = 'q7IoB-iZwUV-mxZYq-SHhHA-2youF-oTAXC-ZmeWd-ZzYsp';
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -275,15 +287,15 @@ async function  createMarketplaceListing(page,browser){
                 }
 
                 // Send a success response back to the AppSheet bot
-                res.status(200).send('Process started successfully.');
+                // res.status(200).send('Process started successfully.');
             } else {
                 console.error('AppSheet API returned an unexpected response:', response.data);
-                res.status(500).send('Error fetching data from AppSheet.');
+                // res.status(500).send('Error fetching data from AppSheet.');
             }
 
         } catch (error) {
             console.error('Error in startposting endpoint:', error.message);
-            res.status(500).send('Internal Server Error.');
+            // res.status(500).send('Internal Server Error.');
         }
 
 

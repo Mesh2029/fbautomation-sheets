@@ -8,6 +8,17 @@ console.log(`Application is using port: ${port}`);
 // Middleware to parse JSON bodies from incoming requests
 app.use(express.json());
 
+const axios = require('axios');
+
+
+
+// Replace these with your actual AppSheet credentials
+const APPSHEET_APP_ID = '41aa9d8f-9048-4ab7-ad08-60bac0a43488';
+// const APPSHEET_TABLE_ID = 'wafbproducts';
+const APPSHEET_TABLE_ID = 'Sheet1';
+const APPSHEET_API_KEY = 'q7IoB-iZwUV-mxZYq-SHhHA-2youF-oTAXC-ZmeWd-ZzYsp';
+
+
 
 
 
@@ -1044,8 +1055,79 @@ app.post('/startposting', async (req, res) => {
 
     try {
         // Here, we call your automation script.
-        await runAutomation();
-        res.status(200).send('Automation task has been triggered successfully.');
+        // await runAutomation();
+        res.status(200).send('\n \n Automation task has been triggered successfully.\n');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //gogole sheets thisngs 
+
+        console.log('Received request from AppSheet bot.');
+
+        try {
+            // Step 1: Make a POST request to the AppSheet API to get the data
+            const response = await axios.post(
+                `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_TABLE_ID}/Action`,
+                {
+                    "Action": "Find",
+                    "Properties": {
+                        "Locale": "en-US"
+                    }
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ApplicationAccessKey': APPSHEET_API_KEY
+                    }
+                }
+            );
+
+            // Check if the AppSheet API call was successful
+            if (response.data && response.data.Rows) {
+                const productData = response.data.Rows;
+                console.log(`Successfully fetched ${productData.length} rows from AppSheet.`);
+
+                // Step 2: Loop through the fetched data and perform your posting task
+                for (const product of productData) {
+                    // YOUR FACEBOOK POSTING LOGIC GOES HERE
+                    // The 'product' object contains all the column data for one row
+                    console.log(`Processing product: ${product.Title}`); 
+                    // You can access other columns like this: product.Price, product.Description
+                }
+
+                // Send a success response back to the AppSheet bot
+                res.status(200).send('Process started successfully.');
+            } else {
+                console.error('AppSheet API returned an unexpected response:', response.data);
+                res.status(500).send('Error fetching data from AppSheet.');
+            }
+
+
+
+             await runAutomation();
+            res.status(200).send('\n \n Automation task has been triggered successfully.\n');
+
+
+        } catch (error) {
+            console.error('Error in startposting endpoint:', error.message);
+            res.status(500).send('Internal Server Error.');
+        }
+
+
+
+
+
     } catch (error) {
         console.error('❌ Error triggering automation:', error);
         res.status(500).send('An error occurred while attempting to trigger the automation.');
