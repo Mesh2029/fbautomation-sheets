@@ -1056,7 +1056,8 @@ app.post('/startposting', async (req, res) => {
     try {
         // Here, we call your automation script.
         // await runAutomation();
-        res.status(200).send('\n \n Automation task has been triggered successfully.\n');
+        // res.status(200).send('\n \n Automation task has been triggered successfully.\n');
+        console.log('\n \n Automation task has been triggered successfully.\n');
 
 
 
@@ -1073,7 +1074,7 @@ app.post('/startposting', async (req, res) => {
 
         //gogole sheets thisngs 
 
-        console.log('Received request from AppSheet bot.');
+        console.log('Received request from AppSheet bot. About to Call Google Appsheets Apis');
 
         try {
             // Step 1: Make a POST request to the AppSheet API to get the data
@@ -1116,8 +1117,8 @@ app.post('/startposting', async (req, res) => {
 
 
              await runAutomation();
-            res.status(200).send('\n \n Automation task has been triggered successfully.\n');
-
+            // res.status(200).send('\n \n Automation task has been triggered successfully.\n');
+            console.log("Just falled the RunAutomation Function")
 
         } catch (error) {
             console.error('Error in startposting endpoint:', error.message);
