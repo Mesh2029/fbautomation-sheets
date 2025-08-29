@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 // Cloud Run and Railway provide this PORT environment variable.
 const port = process.env.PORT || 8000;
-
+console.log(`Application is using port: ${port}`);
 
 
 
