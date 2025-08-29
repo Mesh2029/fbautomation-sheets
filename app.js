@@ -15,7 +15,7 @@ const axios = require('axios');
 // Replace these with your actual AppSheet credentials
 const APPSHEET_APP_ID = '41aa9d8f-9048-4ab7-ad08-60bac0a43488';
 // const APPSHEET_TABLE_ID = 'wafbproducts';
-const APPSHEET_TABLE_ID = 'Sheet1';
+const APPSHEET_TABLE_ID = 'Sheet2';
 const APPSHEET_API_KEY = 'V2-zcaLi-OIn17-hF5Dx-jJ3g8-SBkx2-MuHXG-pnljU-AF0rS';
 
 
