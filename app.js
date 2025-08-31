@@ -1066,6 +1066,50 @@ app.post('/startposting', async (req, res) => {
 
 
 
+        // // Example call for one image path
+        // const imagePath = "images/products/image1.jpg";
+
+        // const response = await axios.post(
+        // `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_TABLE_ID}/Action`,
+        // {
+        //     "Action": "Get",
+        //     "Properties": {
+        //     "Locale": "en-US",
+        //     "Rows": [
+        //         {
+        //         "ImageColumnName": imagePath // Replace 'ImageColumnName' with your actual column name
+        //         }
+        //     ]
+        //     }
+        // },
+        // {
+        //     headers: {
+        //     'Content-Type': 'application/json',
+        //     'ApplicationAccessKey': APPSHEET_API_KEY
+        //     }
+        // }
+        // );
+
+        // // The response will contain a secure URL to the image.
+        // const imageUrl = response.data.Url;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1103,7 +1147,10 @@ app.post('/startposting', async (req, res) => {
                 for (const product of productData) {
                     // YOUR FACEBOOK POSTING LOGIC GOES HERE
                     // The 'product' object contains all the column data for one row
+                    // console.log(`Processing product: ${product.Title}`); 
+
                     console.log(`Processing product: ${product.Title}`); 
+
                     // You can access other columns like this: product.Price, product.Description
                 }
 
