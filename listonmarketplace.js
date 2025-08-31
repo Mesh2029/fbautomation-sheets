@@ -259,7 +259,7 @@ async function  createMarketplaceListing(page,browser){
 
 
 
-        console.log('Received request from AppSheet bot. Wound have done it heare but aldready Done ');
+        console.log('\n\n Received request from AppSheet bot. Wound have done it heare but aldready Done \n');
 
         // try {
         //     // Step 1: Make a POST request to the AppSheet API to get the data
@@ -325,7 +325,7 @@ async function  createMarketplaceListing(page,browser){
 
 
 
-        
+
 
 
 
