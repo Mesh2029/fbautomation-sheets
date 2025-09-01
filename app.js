@@ -16,6 +16,7 @@ const axios = require('axios');
 const APPSHEET_APP_ID = '41aa9d8f-9048-4ab7-ad08-60bac0a43488';
 // const APPSHEET_TABLE_ID = 'wafbproducts';
 const APPSHEET_TABLE_ID = 'wafbproducts';
+const APPSHEET_IMAGESTABLE_ID='Sheet5'
 const APPSHEET_API_KEY = 'V2-zcaLi-OIn17-hF5Dx-jJ3g8-SBkx2-MuHXG-pnljU-AF0rS';
 
 
@@ -1153,18 +1154,59 @@ app.post('/startposting', async (req, res) => {
 
                     // console.log(`Processing product: ${product}`); 
 
-                     console.log(`Processing product: ${JSON.stringify(product, null, 2)}`);
+                // console.log("NOW staerting pulling images of the product")
+
+                console.log("NOW staerting pulling images of the product")
+                // Step 1: Make a POST request to the AppSheet API to get the data
+                const imagesresponse = await axios.post(
+                    `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
+                    {
+                        "Action": "Find",
+                        "Properties": {
+                            "Locale": "en-US"   
+                        },
+                        "Selector": `FILTER([_THISROW], [PRODUCT ID] = "${product.ID}")`
+
+                    },
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'ApplicationAccessKey': APPSHEET_API_KEY
+                        }
+                    }
+                );
+
+                // const productData = response.data.Rows;
+                if (imagesresponse.data) {
+                    const productData = response.data;
+                    console.log(`Successfully fetched Images ${productData.length} rows from AppSheet.`);
+
+                    // Step 2: Loop through the fetched data and perform your posting task
+                    for (const product of productData) {
+
+                        console.log(`Processing product Images : ${JSON.stringify(product, null, 2)}`);
+                    }
+                } else {
+                    console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
+                }
+
+
+
+
+                     console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
 
 
                     // You can access other columns like this: product.Price, product.Description
                 }
 
                 // Send a success response back to the AppSheet bot
-                res.status(200).send('Process started successfully.');
+                // res.status(200).send('Process started successfully.');
             } else {
                 console.error('AppSheet API returned an unexpected response:', response.data);
-                res.status(500).send('Error fetching data from AppSheet.');
+                // res.status(500).send('Error fetching data from AppSheet.');
             }
+
+
 
 
 
