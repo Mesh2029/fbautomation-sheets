@@ -1156,46 +1156,47 @@ app.post('/startposting', async (req, res) => {
 
                     // console.log(`Processing product: ${product}`); 
 
-                // console.log("NOW staerting pulling images of the product")
+                    // console.log("NOW staerting pulling images of the product")
 
-                console.log("NOW pulling main products details ")
-                // Step 1: Make a POST request to the AppSheet API to get the data
-                const imagesresponse = await axios.post(
-                    `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
-                    {
-                        "Action": "Find",
-                        "Properties": {
-                            "Locale": "en-US"   
+                    console.log("NOW pulling main products details Here below detsil  ")
+                    console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
+
+                    // Step 1: Make a POST request to the AppSheet API to get the data
+                    const imagesresponse = await axios.post(
+                        `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
+                        {
+                            "Action": "Find",
+                            "Properties": {
+                                "Locale": "en-US"   
+                            },
+                            "Selector": `FILTER([_THISROW], [PRODUCT ID] = "${product.ID}")`
+
                         },
-                        "Selector": `FILTER([_THISROW], [PRODUCT ID] = "${product.ID}")`
-
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'ApplicationAccessKey': APPSHEET_API_KEY
+                        {
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'ApplicationAccessKey': APPSHEET_API_KEY
+                            }
                         }
+                    );
+
+                    // const productData = response.data.Rows;
+                    if (imagesresponse.data) {
+                        const imageproductData = imagesresponse.data;
+                        console.log(`Successfully fetched Images ${imageproductData.length} rows from AppSheet.`);
+
+                        // Step 2: Loop through the fetched data and perform your posting task
+                        for (const product of imageproductData) {
+
+                            console.log(`Processing product Images : ${JSON.stringify(product['IMAGES PATHS'], null, 2)}`);
+                        }
+                    } else {
+                        console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
                     }
-                );
-
-                // const productData = response.data.Rows;
-                if (imagesresponse.data) {
-                    const imageproductData = imagesresponse.data;
-                    console.log(`Successfully fetched Images ${imageproductData.length} rows from AppSheet.`);
-
-                    // Step 2: Loop through the fetched data and perform your posting task
-                    for (const product of imageproductData) {
-
-                        console.log(`Processing product Images : ${JSON.stringify(product, null, 2)}`);
-                    }
-                } else {
-                    console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
-                }
 
 
 
 
-                     console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
 
 
                     // You can access other columns like this: product.Price, product.Description
