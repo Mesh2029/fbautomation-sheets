@@ -1151,7 +1151,10 @@ app.post('/startposting', async (req, res) => {
                     // The 'product' object contains all the column data for one row
                     // console.log(`Processing product: ${product.Title}`); 
 
-                    console.log(`Processing product: ${product}`); 
+                    // console.log(`Processing product: ${product}`); 
+
+                     console.log(`Processing product: ${JSON.stringify(product, null, 2)}`);
+
 
                     // You can access other columns like this: product.Price, product.Description
                 }
