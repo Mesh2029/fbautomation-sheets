@@ -1169,7 +1169,7 @@ app.post('/startposting', async (req, res) => {
                             "Properties": {
                                 "Locale": "en-US"   
                             },
-                            "Selector": `FILTER([_THISROW], [PRODUCT ID] = "${product.ID}")`
+                            "Selector": `[PRODUCT ID] = "${product.ID}")`
 
                         },
                         {
@@ -1186,9 +1186,9 @@ app.post('/startposting', async (req, res) => {
                         console.log(`Successfully fetched Images ${imageproductData.length} rows from AppSheet.`);
 
                         // Step 2: Loop through the fetched data and perform your posting task
-                        for (const product of imageproductData) {
+                        for (const imageproduct of imageproductData) {
 
-                            console.log(`Processing product Images : ${JSON.stringify(product['IMAGES PATHS'], null, 2)}`);
+                            console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
                         }
                     } else {
                         console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
