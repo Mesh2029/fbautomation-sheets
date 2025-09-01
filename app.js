@@ -1139,8 +1139,10 @@ app.post('/startposting', async (req, res) => {
             );
 
             // Check if the AppSheet API call was successful
-            if (response.data && response.data.Rows) {
-                const productData = response.data.Rows;
+            // if (response.data && response.data.Rows) {
+                // const productData = response.data.Rows;
+            if (response.data) {
+                const productData = response.data;
                 console.log(`Successfully fetched ${productData.length} rows from AppSheet.`);
 
                 // Step 2: Loop through the fetched data and perform your posting task
