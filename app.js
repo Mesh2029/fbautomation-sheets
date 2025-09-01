@@ -1051,7 +1051,7 @@ async function runAutomation() {
 // This is the server part. It's the "cashier" waiting for AppSheet.
 // The '/trigger' route is what AppSheet will call.
 app.post('/startposting', async (req, res) => {
-    console.log('✅ Webhook request received from AppSheet! Starting automation...');
+    console.log('\n\n\n\n\n\✅ Webhook request received from AppSheet! Starting automation...');
 
     try {
         // Here, we call your automation script.
