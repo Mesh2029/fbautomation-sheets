@@ -1123,6 +1123,8 @@ app.post('/startposting', async (req, res) => {
 
         try {
             // Step 1: Make a POST request to the AppSheet API to get the data
+            console.log("NOW pulling main products details ")
+
             const response = await axios.post(
                 `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_TABLE_ID}/Action`,
                 {
@@ -1156,7 +1158,7 @@ app.post('/startposting', async (req, res) => {
 
                 // console.log("NOW staerting pulling images of the product")
 
-                console.log("NOW staerting pulling images of the product")
+                console.log("NOW pulling main products details ")
                 // Step 1: Make a POST request to the AppSheet API to get the data
                 const imagesresponse = await axios.post(
                     `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
@@ -1178,11 +1180,11 @@ app.post('/startposting', async (req, res) => {
 
                 // const productData = response.data.Rows;
                 if (imagesresponse.data) {
-                    const productData = response.data;
-                    console.log(`Successfully fetched Images ${productData.length} rows from AppSheet.`);
+                    const imageproductData = imagesresponse.data;
+                    console.log(`Successfully fetched Images ${imageproductData.length} rows from AppSheet.`);
 
                     // Step 2: Loop through the fetched data and perform your posting task
-                    for (const product of productData) {
+                    for (const product of imageproductData) {
 
                         console.log(`Processing product Images : ${JSON.stringify(product, null, 2)}`);
                     }
