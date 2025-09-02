@@ -1219,7 +1219,7 @@ app.post('/startposting', async (req, res) => {
 
                         }
 
-                        // console.log("about to push to product ", product)
+                        console.log("about to push to product ", imagepaths)
                         product.allimagepaths=imagepaths;
 
                     } else {
