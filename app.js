@@ -1234,7 +1234,9 @@ app.post('/startposting', async (req, res) => {
                                     imagepaths.push(imagepath);
                                 }
                                 catch(error){
-                                    console.log("Here is the error" , error)
+                                    throw(error)
+                                    // console.log("Here is the error" , error)
+
                                 }
 
 
