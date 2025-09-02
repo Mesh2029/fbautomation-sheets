@@ -1158,7 +1158,7 @@ app.post('/startposting', async (req, res) => {
 
                     // console.log("NOW staerting pulling images of the product")
 
-                    console.log("NOW pulling main products details Here below detsil  ")
+                    console.log("NOW pulling main products details Here below details  ")
                     console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
 
                     // Step 1: Make a POST request to the AppSheet API to get the data
@@ -1172,7 +1172,7 @@ app.post('/startposting', async (req, res) => {
                             "Properties": {
                                 "Locale": "en-US"   
                             },
-                            "Selector": `[PRODUCT ID] = "${product.ID}"`
+                            "Selector": `[PRODUCT ID] = ${product.ID}]`
 
                         },
                         {
