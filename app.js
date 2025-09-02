@@ -1198,16 +1198,16 @@ app.post('/startposting', async (req, res) => {
                         // Step 2: Loop through the fetched data and perform your posting task
                         for (const imageproduct of imageproductData) {
                             
-                            const imagepath=JSON.stringify(imageproduct['IMAGES PATHS'],null,2);
+                            const imagepath=imageproduct['IMAGES PATHS'];
                             // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
 
                             const productid=imageproduct['PRODUCT ID']
-                            
+
                             // console.log("imagepath", imagepath)
-                            console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
-
+                            
                             if(productid===product.ID){
-
+                                console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
+                                
                                 console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
 
                                 // console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
@@ -1216,7 +1216,7 @@ app.post('/startposting', async (req, res) => {
                             }
                             else{
                                 // console.log("NOT find  MATCHING ID FOR PRODUCT ID and images product iD");
-                                console.log("NO MATCH")
+                                // console.log("NO MATCH")
                                 
                             }
 
