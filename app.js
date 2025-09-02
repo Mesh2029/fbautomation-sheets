@@ -1150,6 +1150,8 @@ app.post('/startposting', async (req, res) => {
 
                 // Step 2: Loop through the fetched data and perform your posting task
                 for (const product of productData) {
+                    const productDetails=[];
+                    // const imagesDetails=[];
                     // YOUR FACEBOOK POSTING LOGIC GOES HERE
                     // The 'product' object contains all the column data for one row
                     // console.log(`Processing product: ${product.Title}`); 
@@ -1159,7 +1161,8 @@ app.post('/startposting', async (req, res) => {
                     // console.log("NOW staerting pulling images of the product")
 
                     console.log("NOW pulling main products details Here below details  ")
-                    console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
+                    // console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
+                    productDetails.push(JSON.stringify(product, null, 2))
 
                     // Step 1: Make a POST request to the AppSheet API to get the data
 
@@ -1182,10 +1185,10 @@ app.post('/startposting', async (req, res) => {
                             }
                         }
                     );
-
+                    
+                    let imagepaths=[];
                     // const productData = response.data.Rows;
                     if (imagesresponse.data) {
-                        let imagepaths=[];
                         // const imageproductData = JSON.stringify(imagesresponse.data, null, 2);
                         const imageproductData = imagesresponse.data
 
@@ -1197,14 +1200,15 @@ app.post('/startposting', async (req, res) => {
                             const imagepath=JSON.stringify(imageproduct['IMAGES PATHS'],null,2);
                             const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
 
-                            console.log("imagepath", imagepath)
-                            console.log("Product ID ", productid);
+                            // console.log("imagepath", imagepath)
+                            // console.log("Product ID ", productid);
 
                             if(productid===product.ID){
 
                                 console.log("fOUND mATCHING ID FOR PRODUCT ID and images product iD");
 
                                 console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
+                                imagepaths.push(imagepath);
 
                             }
                             else{
@@ -1220,9 +1224,10 @@ app.post('/startposting', async (req, res) => {
 
 
 
+                    productDetails.push(imagepaths);
+                    console.log(productDetails);
 
-
-
+                    // console.log()
                     // You can access other columns like this: product.Price, product.Description
                 }
 
