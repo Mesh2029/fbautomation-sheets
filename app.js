@@ -1147,10 +1147,11 @@ app.post('/startposting', async (req, res) => {
             if (response.data) {
                 const productData = response.data;
                 console.log(`Successfully fetched ${productData.length} rows from AppSheet.`);
+                
+                const productDetails=[];
 
                 // Step 2: Loop through the fetched data and perform your posting task
                 for (const product of productData) {
-                    const productDetails=[];
                     // const imagesDetails=[];
                     // YOUR FACEBOOK POSTING LOGIC GOES HERE
                     // The 'product' object contains all the column data for one row
@@ -1162,7 +1163,7 @@ app.post('/startposting', async (req, res) => {
 
                     console.log("NOW pulling main products details Here below details  ")
                     // console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
-                    productDetails.push(JSON.stringify(product, null, 2))
+                    // productDetails.push(JSON.stringify(product, null, 2))
 
                     // Step 1: Make a POST request to the AppSheet API to get the data
 
@@ -1218,18 +1219,20 @@ app.post('/startposting', async (req, res) => {
 
                         }
 
+                        product.push(imagepaths);
+
                     } else {
                         console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
                     }
 
 
 
-                    productDetails.push(imagepaths);
-                    console.log(productDetails);
-
+                    productDetails.push(product);
+                    
                     // console.log()
                     // You can access other columns like this: product.Price, product.Description
                 }
+                console.log(productDetails);
 
                 // Send a success response back to the AppSheet bot
                 // res.status(200).send('Process started successfully.');
