@@ -1208,7 +1208,7 @@ app.post('/startposting', async (req, res) => {
 
                                 console.log("fOUND mATCHING ID FOR PRODUCT ID and images product iD");
 
-                                console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
+                                // console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
                                 imagepaths.push(imagepath);
 
                             }
@@ -1232,7 +1232,7 @@ app.post('/startposting', async (req, res) => {
                     // console.log()
                     // You can access other columns like this: product.Price, product.Description
                 }
-                console.log(productDetails);
+                console.log("All Products Details " , productDetails);
 
                 // Send a success response back to the AppSheet bot
                 // res.status(200).send('Process started successfully.');
