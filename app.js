@@ -1219,6 +1219,7 @@ app.post('/startposting', async (req, res) => {
 
                         }
 
+                        console.log("about to push to product ", product)
                         product.push(imagepaths);
 
                     } else {
