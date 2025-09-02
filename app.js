@@ -1202,11 +1202,11 @@ app.post('/startposting', async (req, res) => {
                             const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
 
                             // console.log("imagepath", imagepath)
-                            // console.log("Product ID ", productid);
+                            console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
 
                             if(productid===product.ID){
 
-                                console.log("fOUND mATCHING ID FOR PRODUCT ID and images product iD", imagepath);
+                                console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
 
                                 // console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
                                 imagepaths.push(imagepath);
@@ -1214,6 +1214,7 @@ app.post('/startposting', async (req, res) => {
                             }
                             else{
                                 // console.log("NOT find  MATCHING ID FOR PRODUCT ID and images product iD");
+                                console.log("NO MATCH")
                                 
                             }
 
