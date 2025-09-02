@@ -1162,6 +1162,9 @@ app.post('/startposting', async (req, res) => {
                     console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
 
                     // Step 1: Make a POST request to the AppSheet API to get the data
+
+                    console.log("Product ID " , product.ID)
+
                     const imagesresponse = await axios.post(
                         `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
                         {
