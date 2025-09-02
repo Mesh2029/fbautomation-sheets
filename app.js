@@ -1199,6 +1199,19 @@ app.post('/startposting', async (req, res) => {
                         for (const imageproduct of imageproductData) {
                             
                             const imagepath=imageproduct['IMAGES PATHS'];
+
+
+
+
+
+
+
+
+
+
+
+
+
                             // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
 
                             const productid=imageproduct['PRODUCT ID']
@@ -1210,7 +1223,22 @@ app.post('/startposting', async (req, res) => {
                                 
                                 console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
 
-                                // console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
+
+                                const relativePath = imagepath; // Path from your API call
+
+                                const getUrlResponse = await axios.get(
+                                    `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/getFileUrl?path=${encodeURIComponent(relativePath)}`,
+                                    {
+                                        headers: {
+                                            'ApplicationAccessKey': APPSHEET_API_KEY
+                                        }
+                                    }
+                                );
+
+                                // The full URL will be in the response data
+                                const fullUrl = getUrlResponse.data.Url;
+                                console.log("full url", fullUrl);
+           
                                 imagepaths.push(imagepath);
 
                             }
