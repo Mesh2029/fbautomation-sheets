@@ -1172,7 +1172,7 @@ app.post('/startposting', async (req, res) => {
                             "Properties": {
                                 "Locale": "en-US"   
                             },
-                            "Selector": `[PRODUCT ID] = ${product.ID}`
+                            "Selector": `[PRODUCT ID] = "${product.ID}"`
 
                         },
                         {
