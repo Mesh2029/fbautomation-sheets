@@ -1235,6 +1235,8 @@ app.post('/startposting', async (req, res) => {
                                     }
                                 );
 
+                                console.log("All get URL response" , getUrlResponse);
+
                                 // The full URL will be in the response data
                                 const fullUrl = getUrlResponse.data.Url;
                                 console.log("full url", fullUrl);
