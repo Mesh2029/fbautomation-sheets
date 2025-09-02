@@ -1223,25 +1223,30 @@ app.post('/startposting', async (req, res) => {
                                 
                                 console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
 
+                                try{
+                                    const relativePath = imagepath; // Path from your API call
 
-                                const relativePath = imagepath; // Path from your API call
-
-                                const getUrlResponse = await axios.get(
-                                    `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/getFileUrl?path=${encodeURIComponent(relativePath)}`,
-                                    {
-                                        headers: {
-                                            'ApplicationAccessKey': APPSHEET_API_KEY
+                                    const getUrlResponse = await axios.get(
+                                        `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/getFileUrl?path=${encodeURIComponent(relativePath)}`,
+                                        {
+                                            headers: {
+                                                'ApplicationAccessKey': APPSHEET_API_KEY
+                                            }
                                         }
-                                    }
-                                );
+                                    );
 
-                                console.log("All get URL response" , getUrlResponse);
+                                    console.log("All get URL response" , getUrlResponse);
 
-                                // The full URL will be in the response data
-                                const fullUrl = getUrlResponse.data.Url;
-                                console.log("full url", fullUrl);
-           
-                                imagepaths.push(imagepath);
+                                    // The full URL will be in the response data
+                                    const fullUrl = getUrlResponse.data.Url;
+                                    console.log("full url", fullUrl);
+            
+                                    imagepaths.push(imagepath);
+                                }
+                                catch(error){
+                                    console.log("Here is the error" , error)
+                                }
+
 
                             }
                             else{
