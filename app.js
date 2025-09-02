@@ -1185,14 +1185,35 @@ app.post('/startposting', async (req, res) => {
 
                     // const productData = response.data.Rows;
                     if (imagesresponse.data) {
-                        const imageproductData = imagesresponse.data;
+                        let imagepaths=[];
+                        // const imageproductData = JSON.stringify(imagesresponse.data, null, 2);
+                        const imageproductData = imagesresponse.data
+
                         console.log(`Successfully fetched Images ${imageproductData.length} rows from AppSheet.`);
 
                         // Step 2: Loop through the fetched data and perform your posting task
                         for (const imageproduct of imageproductData) {
+                            
+                            const imagepath=JSON.stringify(imageproduct['IMAGES PATHS'],null,2);
+                            const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
 
-                            console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
+                            console.log("imagepath", imagepath)
+                            Console.log("Product ID ", productid);
+
+                            if(productid===product.ID){
+
+                                console.log("fOUND mATCHING ID FOR PRODUCT ID and images product iD");
+
+                                console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
+
+                            }
+                            else{
+                                console.log("NOT find  MATCHING ID FOR PRODUCT ID and images product iD");
+                                
+                            }
+
                         }
+
                     } else {
                         console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
                     }
