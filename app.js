@@ -1208,7 +1208,7 @@ app.post('/startposting', async (req, res) => {
 
                             }
                             else{
-                                console.log("NOT find  MATCHING ID FOR PRODUCT ID and images product iD");
+                                // console.log("NOT find  MATCHING ID FOR PRODUCT ID and images product iD");
                                 
                             }
 
