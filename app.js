@@ -1219,8 +1219,8 @@ app.post('/startposting', async (req, res) => {
 
                         }
 
-                        console.log("about to push to product ", product)
-                        product.push(imagepaths);
+                        // console.log("about to push to product ", product)
+                        product.allimagepaths=imagepaths;
 
                     } else {
                         console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
