@@ -1198,7 +1198,7 @@ app.post('/startposting', async (req, res) => {
                             const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
 
                             console.log("imagepath", imagepath)
-                            Console.log("Product ID ", productid);
+                            console.log("Product ID ", productid);
 
                             if(productid===product.ID){
 
