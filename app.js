@@ -1198,21 +1198,11 @@ app.post('/startposting', async (req, res) => {
                         // Step 2: Loop through the fetched data and perform your posting task
                         for (const imageproduct of imageproductData) {
                             
-                            const imagepath=imageproduct['IMAGES PATHS'];
-
-
-
-
-
-
-
-
-
-
-
-
-
+                            // const imagepath=imageproduct['IMAGES PATHS'];
                             // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
+                            
+                            const imagepath=JSON.stringify(imageproduct['IMAGES PATHS'],null,2);
+
 
                             const productid=imageproduct['PRODUCT ID']
 
