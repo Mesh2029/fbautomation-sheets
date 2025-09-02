@@ -1206,7 +1206,7 @@ app.post('/startposting', async (req, res) => {
 
                             if(productid===product.ID){
 
-                                console.log("fOUND mATCHING ID FOR PRODUCT ID and images product iD");
+                                console.log("fOUND mATCHING ID FOR PRODUCT ID and images product iD", imagepath);
 
                                 // console.log(`Processing product Images : ${JSON.stringify(imageproduct['IMAGES PATHS'], null, 2)}`);
                                 imagepaths.push(imagepath);
