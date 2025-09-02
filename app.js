@@ -1199,8 +1199,10 @@ app.post('/startposting', async (req, res) => {
                         for (const imageproduct of imageproductData) {
                             
                             const imagepath=JSON.stringify(imageproduct['IMAGES PATHS'],null,2);
-                            const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
+                            // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
 
+                            const productid=imageproduct['PRODUCT ID']
+                            
                             // console.log("imagepath", imagepath)
                             console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
 
