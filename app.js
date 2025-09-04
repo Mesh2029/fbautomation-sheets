@@ -1201,8 +1201,9 @@ app.post('/startposting', async (req, res) => {
                             // const imagepath=imageproduct['IMAGES PATHS'];
                             // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
                             
-                            const imagepath=JSON.stringify(imageproduct['FULL IMAGEURLPATHS'],null,2);
+                            // const imagepath=JSON.stringify(imageproduct['FULL IMAGEURLPATHS'],null,2);
 
+                            const imagepath=imageproduct['FULL IMAGEURLPATHS'];
 
                             const productid=imageproduct['PRODUCT ID']
 
