@@ -274,280 +274,8 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
             
         })                                       
         
-
-
-
-
-
-
-
-
-
-
-
-
-        // console.log('\n\n Received request from AppSheet bot. Wound have done it heare but aldready Done \n');
-
-        // //gogole sheets thisngs 
-
-        // console.log('Received request from AppSheet bot. About to Call Google Appsheets Apis');
-
-        // try {
-        //     // Step 1: Make a POST request to the AppSheet API to get the data
-        //     console.log("NOW pulling main products details ")
-
-        //     const response = await axios.post(
-        //         `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_TABLE_ID}/Action`,
-        //         {
-        //             "Action": "Find",
-        //             "Properties": {
-        //                 "Locale": "en-US"
-        //             }
-        //         },
-        //         {
-        //             headers: {
-        //                 'Content-Type': 'application/json',
-        //                 'ApplicationAccessKey': APPSHEET_API_KEY
-        //             }
-        //         }
-        //     );
-
-        //     // Check if the AppSheet API call was successful
-        //     // if (response.data && response.data.Rows) {
-        //         // const productData = response.data.Rows;
-        //     if (response.data) {
-        //         const productData = response.data;
-        //         console.log(`Successfully fetched ${productData.length} rows from AppSheet.`);
-                
-        //         const productDetails=[];
-
-        //         // Step 2: Loop through the fetched data and perform your posting task
-        //         for (const product of productData) {
-        //             // const imagesDetails=[];
-        //             // YOUR FACEBOOK POSTING LOGIC GOES HERE
-        //             // The 'product' object contains all the column data for one row
-        //             // console.log(`Processing product: ${product.Title}`); 
-
-        //             // console.log(`Processing product: ${product}`); 
-
-        //             // console.log("NOW staerting pulling images of the product")
-
-        //             console.log("NOW pulling main products details Here below details  ")
-        //             // console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
-        //             // productDetails.push(JSON.stringify(product, null, 2))
-
-        //             // Step 1: Make a POST request to the AppSheet API to get the data
-
-        //             console.log("Product ID " , product.ID)
-
-        //             const imagesresponse = await axios.post(
-        //                 `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
-        //                 {
-        //                     "Action": "Find",
-        //                     "Properties": {
-        //                         "Locale": "en-US"   
-        //                     },
-        //                     "Selector": `[PRODUCT ID] = "${product.ID}"`
-
-        //                 },
-        //                 {
-        //                     headers: {
-        //                         'Content-Type': 'application/json',
-        //                         'ApplicationAccessKey': APPSHEET_API_KEY
-        //                     }
-        //                 }
-        //             );
-                    
-        //             let imagepaths=[];
-        //             // const productData = response.data.Rows;
-        //             if (imagesresponse.data) {
-        //                 // const imageproductData = JSON.stringify(imagesresponse.data, null, 2);
-        //                 const imageproductData = imagesresponse.data
-
-        //                 console.log(`Successfully fetched Images ${imageproductData.length} rows from AppSheet.`);
-
-        //                 // Step 2: Loop through the fetched data and perform your posting task
-        //                 for (const imageproduct of imageproductData) {
-                            
-        //                     // const imagepath=imageproduct['IMAGES PATHS'];
-        //                     // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
-                            
-        //                     // const imagepath=JSON.stringify(imageproduct['FULL IMAGEURLPATHS'],null,2);
-
-        //                     const imagepathjson=JSON.parse(imageproduct['FULL IMAGEURLPATHS']);
-
-        //                     // console.log("imagepathjson ", imagepathjson)
-        //                     const imagepath=imagepathjson.Url;
-
-
-        //                     const productid=imageproduct['PRODUCT ID']
-
-        //                     // console.log("imagepath", imagepath)
-                            
-
-        
-        //                     if(productid===product.ID){
-        //                         console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
-                                
-        //                         console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
-
-
-        //                         imagepaths.push(imagepath);
-                     
-
-
-        //                     }
-        //                     else{
-        //                         // console.log("NOT find  MATCHING ID FOR PRODUCT ID and images product iD");
-        //                         // console.log("NO MATCH")
-                                
-        //                     }
-
-        //                 }
-
-        //                 console.log("about to push to product ", imagepaths)
-        //                 product.allimagepaths=imagepaths;
-
-        //             } else {
-        //                 console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
-        //             }
-
-
-
-        //             productDetails.push(product);
-                    
-        //             // console.log()
-        //             // You can access other columns like this: product.Price, product.Description
-        //         }
-        //         console.log("All Products Details " , productDetails);
-
-        //         // Send a success response back to the AppSheet bot
-        //         // res.status(200).send('Process started successfully.');
-        //     } else {
-        //         console.error('AppSheet API returned an unexpected response:', response.data);
-        //         // res.status(500).send('Error fetching data from AppSheet.');
-        //     }
-
-
-
-
-
-        //     // res.status(200).send('\n \n Automation task has been triggered successfully.\n');
-        //     console.log("Just falled the RunAutomation Function")
-            
-        // }catch (error) {
-        //     console.error('Error in startposting endpoint:', error.message);
-        //     res.status(500).send('Internal Server Error.');
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    console.log("Here is in MARKETPLACE allproduct details ", allproductdetails.length);
-
     
-
-
-
-
-        
-        // Define the folder path
-
-        const rootfolderpath=process.env.root
-
-        console.log("here is the rootfolder path", rootfolderpath);
-
-        // Function to read the details from the folder
-        const readFolderContents = () => {
-            // Get list of all files in the folder
-            const files = fs.readdirSync(rootfolderpath);
-
-            console.log("Here is the read folder details" , files)
-            // Separate the text file and image files
-            const txtFile = files.find(file => file.endsWith('.txt'));
-            const imageFiles = files.filter(file => !file.endsWith('.txt'));
-
-            // const folderImages = files.filter(file => file.endsWith('.jpg'));
-            const imagepaths=[];
-            const imagetextpaths=[];
-
-            for(const imagepath of imageFiles){
-                
-                const folderimagePaths=path.join(rootfolderpath,imagepath);
-
-                
-                imagepaths.push(folderimagePaths);
-            
-            
-            
-            }
-
-
-            // // Read the content of the text file
-            const txtFilePath = path.join(rootfolderpath, txtFile);
-            const fileContent = fs.readFileSync(txtFilePath, 'utf8');
-
-            console.log("here is the txtFilePath " , txtFilePath )
-            console.log("here is the fileContent " , fileContent)
-
-
-            // const imagetextContent=imagetextpaths;
-            // const folderimagestxtfile=fs.readdirSync(folderPath,)
-
-
-
-            // Return both text content and image file paths
-            return {
-                rootfoldertxtContentLocation: fileContent,
-                imagestxtfilepaths:imagetextpaths,
-                imagespaths:imagepaths,
-            };
-        };
-
-        // Read  ROOT folder contents
-        const {rootfoldertxtContentLocation,imagestxtfilepaths,imagespaths}=readFolderContents();
-
-        
-        // const productsfolders=[];
-
-        // for(let i=0; i<imagespaths.length; i++){
-
-        //     const randomnumber=Math.floor(Math.random()*imagespaths.length)
-
-        //     console.log("Here is the RANDOM NUMBER TO BE USED FOR PRODUCTS SHUFFLING+ "  + randomnumber);
-            
-        //     productsfolders.push(imagespaths[randomnumber])
-        // }
-
-
-
+        console.log("Here is in MARKETPLACE allproduct details ", allproductdetails.length);
 
 
         function shuffleArray(array) {
@@ -560,20 +288,15 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
         
         }
           
-
-        const productsfolders=shuffleArray(imagespaths);
+        // const productsfolders=shuffleArray(imagespaths);
           
+        const productsfolders=allproductdetails;
         
-
-        console.log("Here is the shuffled products list : first length + :" + productsfolders.length + "  \n\n"  )
-
+        console.log("\nHere is the unshuffled products list : first length + :" + productsfolders.length + "  \n\n"  )
 
         for(const product of productsfolders){
             console.log(product);
         }
-
-
-
 
 
         for(const productfolder of productsfolders){
@@ -605,59 +328,28 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
             // console.log('Current Time:', currentTime + "  \n\n:");
 
           
-          
-          
 
-
-            // console.log("I AM WAITING FOR 90 SECONDS BEFORE i CONTINUE TO THE NEXT PRODUCT TO POST TO MARKETPLACE ")
-
-
-
-            const productdetailspath=path.join(productfolder,'details.txt')
-
-            const foldervalue=fs.readFileSync(productdetailspath,'utf8');
-
-            
-            
-            
-            // console.log("here is the value of the folderv + foldervalue)   \n\n"); 
-
-
-            // console.log("Welcome to the Create Marketplace Listing Function THE BEGINNING  Here is the function PAGE  " + page)
-
-
-            // console.log("Welcome to the Create Marketplace Listing Function THE BEGINNING  Here is the function BROWSER  " + browser)
-
-
-            // page.setCacheEnabled(false)
             
             const originalurl=page.url();
             console.log("original url ", originalurl);
-            
-            
-            
+   
             // console.log("About to sTART CREATING A MARKETPLACE LISTING ")
             // console.log("here is the original url of homne page " , originalurl)
-
-
 
 
             // await page.waitForSelector('a[aria-label="Create new listing"] span[')
 
             // wait for 30 seconds before screenshot of the CREATE LISTING PAGE 
-                // await page.evaluate(async()=>{
-                //     return new Promise(resolve => setTimeout(resolve, 1000))
-                // }); 
-    
+            // await page.evaluate(async()=>{
+            //     return new Promise(resolve => setTimeout(resolve, 1000))
+            // }); 
+
+            // await page.waitForSelector('a[aria-label="Marketplace"][href="/marketplace/?ref=app_tab"][role="link"]',{timeout:90000})
 
 
-
-                // await page.waitForSelector('a[aria-label="Marketplace"][href="/marketplace/?ref=app_tab"][role="link"]',{timeout:90000})
-
-
-                // const marketplace=await page.waitForSelector('a[aria-label="Marketplace"][href="/marketplace/?ref=app_tab"][role="link"]', {timeout:90000});
-                
+            // const marketplace=await page.waitForSelector('a[aria-label="Marketplace"][href="/marketplace/?ref=app_tab"][role="link"]', {timeout:90000});
             
+        
                 await page.evaluate(async()=>{
                     return new Promise(resolve => setTimeout(resolve, 2000))
                 }); 
@@ -1064,68 +756,6 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                 // ]);
                 
 
-                                                
-                                                
-                                                // Define the folder path
-                                                const folderPath = productfolder;
-
-                                                // console.log("here is the folder path before I accessand use the images  " + productfolder)
-
-
-                                                // Function to read the details from the folder
-                                                const readFolderContent = () => {
-                                                    // Get list of all files in the folder
-                                                    const files = fs.readdirSync(folderPath);
-
-                                                    // Separate the text file and image files
-                                                    const txtFile = files.find(file => file.endsWith('.txt'));
-                                                    const imageFiles = files.filter(file => !file.endsWith('.txt'));
-
-                                                    // const folderImages = files.filter(file => file.endsWith('.jpg'));
-                                                    const imagepaths=[];
-                                                    const imagetextpaths=[];
-
-                                                    for(const imagepath of imageFiles){
-                                                        
-                                                        const folderimagePaths=path.join(folderPath,imagepath);
-
-                                                        imagepaths.push(folderimagePaths);
-                                                    
-                                                    }
-
-
-                                                    // Read the content of the text file
-                                                    const txtFilePath = path.join(folderPath, txtFile);
-
-                                                    imagetextpaths.push(txtFilePath);
-                                                    
-
-                                                    // Return both text content and image file paths
-                                                    return {
-                                                        // rootfoldertxtContent: fileContent,
-                                                        imagestxtfilepaths:imagetextpaths,
-                                                        imagespaths:imagepaths,
-                                                    };
-                                                };
-
-
-
-
-                                                // Read  ROOT folder contents
-                                                const {rootfoldertxtContent,imagestxtfilepaths,imagespaths}=readFolderContent();
-
-
-                                                // console.log("here is the text Content DETAILS OF  file in ROOT Folder for root  " + rootfoldertxtContent)
-                                                // console.log("here is the Images txt file PATHS  v+ imagestxtfilepaths " );
-                                                
-                                                // console.log("here is the images files paths in Folder for root v+ imagespaths " )
-
-                                                // console.log(imagespaths);
-
-                                                const imagestxtfile=imagestxtfilepaths[0];
-
-                                                const imagestxtfileContent=fs.readFileSync(imagestxtfile, "utf8");
-                                                // console.log("here is the read File for the Images File text Content " + imagestxtfileContent);
 
 
                                                 // Parse the txt file content into an object
@@ -1165,7 +795,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                 // console.log("Just clicked the Images Upload buttons")                                                
                                                 
                                                 // await page.setInputFiles('//label/input[type="file" accept="image/*,image/heif,image/heic"', imagespaths);   
-                                                await page.setInputFiles('label input[type="file"][accept="image/*,image/heif,image/heic"]', imagespaths);
+                                                await page.setInputFiles('label input[type="file"][accept="image/*,image/heif,image/heic"]', productfolder.allimagepaths);
                                                 console.log("Just selected the images to upload  and uploaded wait 5 seconds before continue")
 
                                                 
