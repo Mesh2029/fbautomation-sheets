@@ -759,20 +759,20 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
 
 
                                                 // Parse the txt file content into an object
-                                                const data = {};
+                                                const data = productfolder
 
-                                                imagestxtfileContent.split('\n').forEach(line => {
-                                                    const [key, ...value] = line.split(':');
+                                                // imagestxtfileContent.split('\n').forEach(line => {
+                                                //     const [key, ...value] = line.split(':');
                                                     
-                                                    if (key && value) {
-                                                        data[key.trim().toLowerCase()] = value.join(':').trim();
-                                                    }
-                                                });
+                                                //     if (key && value) {
+                                                //         data[key.trim().toLowerCase()] = value.join(':').trim();
+                                                //     }
+                                                // });
 
                                                 // console.log(imagestxtfileContent);
                                                 
                                                 console.log("\n here is the for data  " + data + "\n")
-                                                console.log(data)
+                                                // console.log(data)
 
                                                 
                                                 // Replace ellipses (...) with new lines (\n) in the description
