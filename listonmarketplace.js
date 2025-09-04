@@ -786,7 +786,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
 
                                                 
                                                 // Replace ellipses (...) with new lines (\n) in the description
-                                                const formattedDescription = data.description.replace(/\.\.\./g, '\n\n');
+                                                const formattedDescription = data.DESCRIPRITON.replace(/\.\.\./g, '\n\n');
 
                                                 // const formattedTags=data.tags.split("...");
 
@@ -1089,9 +1089,9 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                 console.log("Now waiting 5 seconds after cliking on the Category Label now waiting for the Grouplist");
 
 
-                                                console.log("Here is the Category Details , ", data.category)
+                                                console.log("Here is the Category Details , ", data.CATEGORY)
                                                 // console.log("here is the details about the Data to Enter into the File "  + data+ "   "+  data.category);
-                                                const categoryalloptions=data.category
+                                                const categoryalloptions=data.CATEGORY;
 
                                                 console.log("All category options");
                                                 
@@ -1158,7 +1158,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
 
                                                         console.log("now within category options")
                                                         for(const span of spans){
-                                                            if(span.textContent===data.category){
+                                                            if(span.textContent===data.CATEGORY){
                                                                 categoryoption.click();
                                                                 console.log("found the right category to click option")
 
@@ -1175,7 +1175,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
 
                                         
 
-                                            console.log("Already clicked on the Category "  + data + "   "+  data.category);
+                                            console.log("Already clicked on the Category "  + data + "   "+  data.CATEGORY);
 
                                             // wait for 30 seconds before starting to scroll the joined groups 
                                             await page.evaluate(()=>{
@@ -1289,7 +1289,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                         
                                                             const selectoption= optionhandle.querySelector('span');
 
-                                                            if (selectoption && selectoption.innerHTML === data.condition) {
+                                                            if (selectoption && selectoption.innerHTML === data.CONDITION) {
 
                                                                 // console.log("here is the Condition selected Options " + selectoption.textContent)
                                                                 // Fill the input with text
