@@ -1201,43 +1201,23 @@ app.post('/startposting', async (req, res) => {
                             // const imagepath=imageproduct['IMAGES PATHS'];
                             // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
                             
-                            const imagepath=JSON.stringify(imageproduct['IMAGES PATHS'],null,2);
+                            const imagepath=JSON.stringify(imageproduct['FULL IMAGEURLPATHS'],null,2);
 
 
                             const productid=imageproduct['PRODUCT ID']
 
                             // console.log("imagepath", imagepath)
                             
+
+        
                             if(productid===product.ID){
                                 console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
                                 
                                 console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
 
-                                try{
-                                    const relativePath = imagepath; // Path from your API call
 
-                                    const getUrlResponse = await axios.get(
-                                        `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/getFileUrl?path=${encodeURIComponent(relativePath)}`,
-                                        {
-                                            headers: {
-                                                'ApplicationAccessKey': APPSHEET_API_KEY
-                                            }
-                                        }
-                                    );
-
-                                    console.log("All get URL response" , getUrlResponse);
-
-                                    // The full URL will be in the response data
-                                    const fullUrl = getUrlResponse.data.Url;
-                                    console.log("full url", fullUrl);
-            
-                                    imagepaths.push(imagepath);
-                                }
-                                catch(error){
-                                    throw(error)
-                                    // console.log("Here is the error" , error)
-
-                                }
+                                imagepaths.push(imagepath);
+                     
 
 
                             }
