@@ -290,13 +290,16 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
           
         // const productsfolders=shuffleArray(imagespaths);
           
+        // const productsfolders=allproductdetails.map(product=>JSON.parse(product));
+
         const productsfolders=allproductdetails;
-        
+
+
         console.log("\nHere is the unshuffled products list : first length + :" + productsfolders.length + "  \n\n"  )
 
-        for(const product of productsfolders){
-            console.log(product);
-        }
+        // for(const product of productsfolders){
+        //     console.log(product);
+        // }
 
 
         for(const productfolder of productsfolders){
@@ -782,11 +785,11 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                 // console.log(imagestxtfileContent);
                                                 
                                                 console.log("\n here is the for data  " + data + "\n")
-                                                // console.log(data)
+                                                console.log(data)
 
                                                 
                                                 // Replace ellipses (...) with new lines (\n) in the description
-                                                const formattedDescription = data.DESCRIPRITON.replace(/\.\.\./g, '\n\n');
+                                                const formattedDescription = data.DESCRIPTION.replace(/\.\.\./g, '\n\n');
 
                                                 // const formattedTags=data.tags.split("...");
 
