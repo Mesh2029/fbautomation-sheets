@@ -394,150 +394,157 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                     return new Promise(resolve => setTimeout(resolve, 3000))
                 }); 
         
+        // *********************Location boolishits is here *************************
+                // //Change Location before starting to list product
 
-                //Change Location before starting to list product
+                // const locationvalue=rootfoldertxtContentLocation
 
-                const locationvalue=rootfoldertxtContentLocation
+                // console.log("here is the folder and value of the  location file" + locationvalue);
 
-                console.log("here is the folder and value of the  location file" + locationvalue);
+                // // If the content is like "location= Davies,Florida", you might want to parse it
+                // // Example: Extract "Location"
 
-                // If the content is like "location= Davies,Florida", you might want to parse it
-                // Example: Extract "Location"
-
-                const locationparts = locationvalue.split('=');
-                const location = locationparts.length > 1 ? locationparts[1].trim() : locationvalue.trim();
-
-                
-                
-                //Find and click on the location button to choose and change location
-                const sanitizelocationparts=location.split(",").map(location=>location.trim());
-                const sanitizedlocation = sanitizelocationparts.length > 1 ? sanitizelocationparts.join(" ") : sanitizelocationparts[0];
-                
-                
-                console.log("\n Here is the picked location to post to sanitized location ", sanitizedlocation);
-                //Click on the location button 
-
-                console.log("About to click on the location chooser button");
-                await page.locator("xpath=//div[@id='seo_filters']/div[@role='button']").click();
-
-                console.log("Waiting after clicking on the location chooser");
-
-                await page.waitForTimeout(2000)
-
-
-                //click location input 
-                const locationinput=await page.locator("xpath=//input[@role='combobox' and @aria-label='Location']")
-
-                await locationinput.click();
-                console.log("clicked on the location input ....")
-
-                await locationinput.type(sanitizedlocation, {delay:600, timeout:40000});
-                console.log("Typed on the location input ....")
-
-                await page.waitForTimeout(2000);
+                // const locationparts = locationvalue.split('=');
+                // const location = locationparts.length > 1 ? locationparts[1].trim() : locationvalue.trim();
 
                 
-                try{
-                    // const searchoptionslistbox=await page.locator("xpath=//div[@class='__fb-light-mode']");
-                    const searchoptionslistbox=await page.locator("xpath=//ul[@role='listbox' and contains(@aria-label, 'suggested searches')]");
+                
+                // //Find and click on the location button to choose and change location
+                // const sanitizelocationparts=location.split(",").map(location=>location.trim());
+                // const sanitizedlocation = sanitizelocationparts.length > 1 ? sanitizelocationparts.join(" ") : sanitizelocationparts[0];
+                
+                
+                // console.log("\n Here is the picked location to post to sanitized location ", sanitizedlocation);
+                // //Click on the location button 
 
-                    // Wait for at least one element to appear that matches the locator
-                    await searchoptionslistbox.first().waitFor(); 
+                // console.log("About to click on the location chooser button");
+                // await page.locator("xpath=//div[@id='seo_filters']/div[@role='button']").click();
 
-                    console.log("Here is the number of searchoptions listbox, ", await searchoptionslistbox.count())
+                // console.log("Waiting after clicking on the location chooser");
 
-                    const searchoptions=await searchoptionslistbox.locator("xpath=//li")
-                    const searchoptionsarray=await searchoptions.all();
+                // await page.waitForTimeout(2000)
 
-                    const totalnumberofsearchoptions=await searchoptions.count();
 
-                    console.log("Here is the number of searchoptions, ", await searchoptions.count())
+                // //click location input 
+                // const locationinput=await page.locator("xpath=//input[@role='combobox' and @aria-label='Location']")
 
-                    let isMatch=false;
+                // await locationinput.click();
+                // console.log("clicked on the location input ....")
 
-                    for(const [index,searchoption] of searchoptionsarray.entries()){
-                        if(isMatch===true) break;
+                // await locationinput.type(sanitizedlocation, {delay:600, timeout:40000});
+                // console.log("Typed on the location input ....")
 
-                        const searchoptionsSpan=await searchoption.locator("xpath=//span").first();
+                // await page.waitForTimeout(2000);
+
+                
+                // try{
+                //     // const searchoptionslistbox=await page.locator("xpath=//div[@class='__fb-light-mode']");
+                //     const searchoptionslistbox=await page.locator("xpath=//ul[@role='listbox' and contains(@aria-label, 'suggested searches')]");
+
+                //     // Wait for at least one element to appear that matches the locator
+                //     await searchoptionslistbox.first().waitFor(); 
+
+                //     console.log("Here is the number of searchoptions listbox, ", await searchoptionslistbox.count())
+
+                //     const searchoptions=await searchoptionslistbox.locator("xpath=//li")
+                //     const searchoptionsarray=await searchoptions.all();
+
+                //     const totalnumberofsearchoptions=await searchoptions.count();
+
+                //     console.log("Here is the number of searchoptions, ", await searchoptions.count())
+
+                //     let isMatch=false;
+
+                //     for(const [index,searchoption] of searchoptionsarray.entries()){
+                //         if(isMatch===true) break;
+
+                //         const searchoptionsSpan=await searchoption.locator("xpath=//span").first();
                         
-                        const spanText=await searchoptionsSpan.textContent();
-                        const sanitizedSpanText=spanText.toUpperCase().trim();
+                //         const spanText=await searchoptionsSpan.textContent();
+                //         const sanitizedSpanText=spanText.toUpperCase().trim();
                         
                         
-                        console.log("Here is sanitized searchoptions Span Text ", sanitizedSpanText);
+                //         console.log("Here is sanitized searchoptions Span Text ", sanitizedSpanText);
                         
-                        if(sanitizedSpanText===sanitizedlocation.toUpperCase()){
-                            console.log("\nTry to match my neede location ", sanitizedlocation , " to FB location", sanitizedSpanText);
-                            console.log("Got Exact Match for this FB location option ", sanitizedSpanText , " \n");
+                //         if(sanitizedSpanText===sanitizedlocation.toUpperCase()){
+                //             console.log("\nTry to match my neede location ", sanitizedlocation , " to FB location", sanitizedSpanText);
+                //             console.log("Got Exact Match for this FB location option ", sanitizedSpanText , " \n");
 
-                            await searchoption.click();
-                            break;
-                        }
+                //             await searchoption.click();
+                //             break;
+                //         }
                         
-                        if(index===totalnumberofsearchoptions-1){
+                //         if(index===totalnumberofsearchoptions-1){
 
-                            for(const [index,searchoption] of searchoptionsarray.entries()){
-                                if (isMatch===true) break;
+                //             for(const [index,searchoption] of searchoptionsarray.entries()){
+                //                 if (isMatch===true) break;
                                 
 
-                                const searchoptionsSpan=await searchoption.locator("xpath=//span").first();
+                //                 const searchoptionsSpan=await searchoption.locator("xpath=//span").first();
                         
-                                const spanText=await searchoptionsSpan.textContent();
-                                const sanitizedSpanText=spanText.toUpperCase().trim();
+                //                 const spanText=await searchoptionsSpan.textContent();
+                //                 const sanitizedSpanText=spanText.toUpperCase().trim();
                                 
                         
 
-                                console.log("\n\n\n Here is the index, ", index ,"   \n\n\n");
-                                const splitlocationstring=sanitizedlocation.toUpperCase().split(" ")
+                //                 console.log("\n\n\n Here is the index, ", index ,"   \n\n\n");
+                //                 const splitlocationstring=sanitizedlocation.toUpperCase().split(" ")
                                 
 
-                                for(const splitstring of splitlocationstring){
-                                    if(sanitizedSpanText.includes(splitstring)){
-                                        isMatch=true;
-                                        console.log("\nTry to match my needed location ", sanitizedlocation , "the part of it ",splitstring,  "to FB location", sanitizedSpanText);
-                                        console.log("Chose Almost similar this FB location option ", sanitizedSpanText , " \n");
-                                        await searchoption.click();
+                //                 for(const splitstring of splitlocationstring){
+                //                     if(sanitizedSpanText.includes(splitstring)){
+                //                         isMatch=true;
+                //                         console.log("\nTry to match my needed location ", sanitizedlocation , "the part of it ",splitstring,  "to FB location", sanitizedSpanText);
+                //                         console.log("Chose Almost similar this FB location option ", sanitizedSpanText , " \n");
+                //                         await searchoption.click();
 
-                                        break;
-                                    }
-                                    else{
-                                        console.log("\nTry to match my needed location ", sanitizedlocation , "the part of it ",splitstring,  "to FB location", sanitizedSpanText);
-                                        console.log("This part of the My needed location, ",splitstring, "No Match found for this FB location option ", sanitizedSpanText , " Skip this Piece of Location\n");
-                                    }
-                                }
+                //                         break;
+                //                     }
+                //                     else{
+                //                         console.log("\nTry to match my needed location ", sanitizedlocation , "the part of it ",splitstring,  "to FB location", sanitizedSpanText);
+                //                         console.log("This part of the My needed location, ",splitstring, "No Match found for this FB location option ", sanitizedSpanText , " Skip this Piece of Location\n");
+                //                     }
+                //                 }
                       
 
-                            }
+                //             }
 
-                        }
-                        else{
-                            console.log("Still more location options to consider ");
-                        }
-                    }
+                //         }
+                //         else{
+                //             console.log("Still more location options to consider ");
+                //         }
+                //     }
 
-                    //Finished looking for location now the Radisu should go htere
-                    await page.waitForTimeout(4000);
+                //     //Finished looking for location now the Radisu should go htere
+                //     await page.waitForTimeout(4000);
 
-                    //Click on the apply button 
-                    await page.locator("xpath=//div[@role='button' and @aria-label='Apply' and .//span[text()='Apply']]").click();
+                //     //Click on the apply button 
+                //     await page.locator("xpath=//div[@role='button' and @aria-label='Apply' and .//span[text()='Apply']]").click();
 
-                    await page.waitForTimeout(6000);
-                    console.log("Waiting 6 seconds after clicking Apply to Change location....")
+                //     await page.waitForTimeout(6000);
+                //     console.log("Waiting 6 seconds after clicking Apply to Change location....")
 
 
-                }
-                catch(error){
-                    if(error.name==="TimeoutError"){
-                        console.log("Location Not Found \n", error);
-                        throw error
-                    }
-                    else{
-                        console.log("A different location Error")
-                    }
-                }
+                // }
+                // catch(error){
+                //     if(error.name==="TimeoutError"){
+                //         console.log("Location Not Found \n", error);
+                //         throw error
+                //     }
+                //     else{
+                //         console.log("A different location Error")
+                //     }
+                // }
               
-                console.log("Finished changing for location using provided location ");
-                await page.waitForTimeout(5000)
+                // console.log("Finished changing for location using provided location ");
+                // await page.waitForTimeout(5000)
+
+        // *********************Location boolishits is here *************************
+
+
+
+
+
                 // const filepath=path.join(rootfolderpath, "folderdetails.txt")
 
                 // Read the content of the file
@@ -555,14 +562,17 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                 
                 // console.log("have waited for 30 seconds before taking the screenshot of create lising page above")
 
-                //Click and start using the Create New lisgint button 
-                await page.waitForSelector('//a[.//span[text()="Create new listing"]]');
 
-                // Wait for the link to be available
-                const createnewlistingbutton = await page.$('//a[.//span[text()="Create new listing"]]');
+            await page.waitForTimeout(3000)
 
-                await createnewlistingbutton.click();
-              
+            //Click and start using the Create New lisgint button 
+            await page.waitForSelector('//a[.//span[text()="Create new listing"]]');
+
+            // Wait for the link to be available
+            const createnewlistingbutton = await page.$('//a[.//span[text()="Create new listing"]]');
+
+            await createnewlistingbutton.click();
+            
 
             // Log the current URL
             console.log('I already Clicked on the CREATE NEW LISTING BUTTONS Navigated to the create Listing Route here is the new url for create listing:', page.url());
