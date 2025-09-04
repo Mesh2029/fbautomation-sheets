@@ -1205,7 +1205,7 @@ app.post('/startposting', async (req, res) => {
 
                             const imagepathjson=JSON.parse(imageproduct['FULL IMAGEURLPATHS']);
 
-                            console.log("imagepathjson ", imagepathjson)
+                            // console.log("imagepathjson ", imagepathjson)
                             const imagepath=imagepathjson.Url;
 
 
