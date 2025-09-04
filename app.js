@@ -1114,7 +1114,7 @@ app.post('/startposting', async (req, res) => {
 
                     // Step 1: Make a POST request to the AppSheet API to get the data
 
-                    console.log("Product ID " , product.ID)
+                    // console.log("Product ID " , product.ID)
 
                     const imagesresponse = await axios.post(
                         `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
@@ -1165,7 +1165,7 @@ app.post('/startposting', async (req, res) => {
                             if(productid===product.ID){
                                 console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
                                 
-                                console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
+                                // console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
 
 
                                 imagepaths.push(imagepath);
@@ -1207,10 +1207,10 @@ app.post('/startposting', async (req, res) => {
 
 
 
-            console.log("before running automation here are the product details", productDetails)
+            // console.log("before running automation here are the product details", productDetails)
             await runAutomation(productDetails);
             // res.status(200).send('\n \n Automation task has been triggered successfully.\n');
-            console.log("Just falled the RunAutomation Function")
+            // console.log("Just falled the RunAutomation Function")
 
         } catch (error) {
             console.error('Error in startposting endpoint:', error.message);
