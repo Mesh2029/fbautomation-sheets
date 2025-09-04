@@ -470,7 +470,9 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
 
 
 
-    console.log("Here is in MARKETPLACE allproduct details ", allproductdetails);
+    console.log("Here is in MARKETPLACE allproduct details ", allproductdetails.length);
+
+    
 
 
 
