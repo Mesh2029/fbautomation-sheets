@@ -27,7 +27,8 @@ const APPSHEET_API_KEY = 'V2-zcaLi-OIn17-hF5Dx-jJ3g8-SBkx2-MuHXG-pnljU-AF0rS';
 // Launch the browser and open a new blank page
 // app.js
 
-async function runAutomation() {
+async function runAutomation(allproductdetails) {
+   
     console.log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n🕐 Starting automation at", new Date().toLocaleString() ," \n");
 
 
@@ -519,8 +520,8 @@ async function runAutomation() {
 
 
 
-// Continue with automation using `browserContext.pages()[0]` or `browserContext.newPage()`
-                
+    // Continue with automation using `browserContext.pages()[0]` or `browserContext.newPage()`
+                    
 
 
                 //launch new page
@@ -700,7 +701,7 @@ async function runAutomation() {
                         // await postTogroups(page,browser);
         
         
-                        await createMarketplaceListing(page,browser);
+                        await createMarketplaceListing(page,browser,allproductdetails);
         
                         // await listInmorePlaces(page,browser);
         
@@ -979,7 +980,7 @@ async function runAutomation() {
                         // await postTogroups(page,browser);
         
         
-                        await createMarketplaceListing(page,browser);
+                        await createMarketplaceListing(page,browser,allproductdetails);
         
                         // await listInmorePlaces(page,browser);
         
@@ -1059,62 +1060,6 @@ app.post('/startposting', async (req, res) => {
         // await runAutomation();
         // res.status(200).send('\n \n Automation task has been triggered successfully.\n');
         console.log('\n \n Automation task has been triggered successfully.\n');
-
-
-
-
-
-
-
-
-        // // Example call for one image path
-        // const imagePath = "images/products/image1.jpg";
-
-        // const response = await axios.post(
-        // `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_TABLE_ID}/Action`,
-        // {
-        //     "Action": "Get",
-        //     "Properties": {
-        //     "Locale": "en-US",
-        //     "Rows": [
-        //         {
-        //         "ImageColumnName": imagePath // Replace 'ImageColumnName' with your actual column name
-        //         }
-        //     ]
-        //     }
-        // },
-        // {
-        //     headers: {
-        //     'Content-Type': 'application/json',
-        //     'ApplicationAccessKey': APPSHEET_API_KEY
-        //     }
-        // }
-        // );
-
-        // // The response will contain a secure URL to the image.
-        // const imageUrl = response.data.Url;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         //gogole sheets thisngs 
@@ -1248,7 +1193,7 @@ app.post('/startposting', async (req, res) => {
                     // console.log()
                     // You can access other columns like this: product.Price, product.Description
                 }
-                console.log("All Products Details " , productDetails);
+                // console.log("All Products Details " , productDetails);
 
                 // Send a success response back to the AppSheet bot
                 // res.status(200).send('Process started successfully.');
@@ -1260,8 +1205,8 @@ app.post('/startposting', async (req, res) => {
 
 
 
-
-             await runAutomation();
+            console.log("before running automation here are the product details", productDetails)
+            await runAutomation(productDetails);
             // res.status(200).send('\n \n Automation task has been triggered successfully.\n');
             console.log("Just falled the RunAutomation Function")
 

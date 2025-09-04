@@ -1,22 +1,22 @@
-const dotenv= require('dotenv');
-dotenv.config();
+// A simple server to receive the webhook from AppSheet and run your automation script.
+const express = require('express');
+const app = express();
+// Cloud Run and Railway provide this PORT environment variable.
+const port = process.env.PORT || 8000;
+console.log(`Application is using port: ${port}`);
 
-
-const path=require('path');
-const fs= require("fs")
-const { timeout, TimeoutError }=require( 'puppeteer');
-const os=require("os");
-const {platform} =require("process");
-// Using CommonJS (most common in Node.js)
-
+// Middleware to parse JSON bodies from incoming requests
+app.use(express.json());
 
 const axios = require('axios');
+
 
 
 // Replace these with your actual AppSheet credentials
 const APPSHEET_APP_ID = '41aa9d8f-9048-4ab7-ad08-60bac0a43488';
 // const APPSHEET_TABLE_ID = 'wafbproducts';
-const APPSHEET_TABLE_ID = 'Sheet2';
+const APPSHEET_TABLE_ID = 'wafbproducts';
+const APPSHEET_IMAGESTABLE_ID='Sheet5'
 const APPSHEET_API_KEY = 'V2-zcaLi-OIn17-hF5Dx-jJ3g8-SBkx2-MuHXG-pnljU-AF0rS';
 
 
@@ -33,7 +33,34 @@ const APPSHEET_API_KEY = 'V2-zcaLi-OIn17-hF5Dx-jJ3g8-SBkx2-MuHXG-pnljU-AF0rS';
 
 
 
-async function  createMarketplaceListing(page,browser){
+
+
+
+const dotenv= require('dotenv');
+dotenv.config();
+
+
+const path=require('path');
+const fs= require("fs")
+const { timeout, TimeoutError }=require( 'puppeteer');
+const os=require("os");
+const {platform} =require("process");
+// Using CommonJS (most common in Node.js)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function  createMarketplaceListing(page,browser,allproductdetails){
 
     try{
         
@@ -259,10 +286,16 @@ async function  createMarketplaceListing(page,browser){
 
 
 
-        console.log('\n\n Received request from AppSheet bot. Wound have done it heare but aldready Done \n');
+        // console.log('\n\n Received request from AppSheet bot. Wound have done it heare but aldready Done \n');
+
+        // //gogole sheets thisngs 
+
+        // console.log('Received request from AppSheet bot. About to Call Google Appsheets Apis');
 
         // try {
         //     // Step 1: Make a POST request to the AppSheet API to get the data
+        //     console.log("NOW pulling main products details ")
+
         //     const response = await axios.post(
         //         `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_TABLE_ID}/Action`,
         //         {
@@ -280,17 +313,113 @@ async function  createMarketplaceListing(page,browser){
         //     );
 
         //     // Check if the AppSheet API call was successful
-        //     if (response.data && response.data.Rows) {
-        //         const productData = response.data.Rows;
+        //     // if (response.data && response.data.Rows) {
+        //         // const productData = response.data.Rows;
+        //     if (response.data) {
+        //         const productData = response.data;
         //         console.log(`Successfully fetched ${productData.length} rows from AppSheet.`);
+                
+        //         const productDetails=[];
 
         //         // Step 2: Loop through the fetched data and perform your posting task
         //         for (const product of productData) {
+        //             // const imagesDetails=[];
         //             // YOUR FACEBOOK POSTING LOGIC GOES HERE
         //             // The 'product' object contains all the column data for one row
-        //             console.log(`Processing product: ${product.Title}`); 
+        //             // console.log(`Processing product: ${product.Title}`); 
+
+        //             // console.log(`Processing product: ${product}`); 
+
+        //             // console.log("NOW staerting pulling images of the product")
+
+        //             console.log("NOW pulling main products details Here below details  ")
+        //             // console.log(`Processing product IMages : ${JSON.stringify(product, null, 2)}`);
+        //             // productDetails.push(JSON.stringify(product, null, 2))
+
+        //             // Step 1: Make a POST request to the AppSheet API to get the data
+
+        //             console.log("Product ID " , product.ID)
+
+        //             const imagesresponse = await axios.post(
+        //                 `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_IMAGESTABLE_ID}/Action`,
+        //                 {
+        //                     "Action": "Find",
+        //                     "Properties": {
+        //                         "Locale": "en-US"   
+        //                     },
+        //                     "Selector": `[PRODUCT ID] = "${product.ID}"`
+
+        //                 },
+        //                 {
+        //                     headers: {
+        //                         'Content-Type': 'application/json',
+        //                         'ApplicationAccessKey': APPSHEET_API_KEY
+        //                     }
+        //                 }
+        //             );
+                    
+        //             let imagepaths=[];
+        //             // const productData = response.data.Rows;
+        //             if (imagesresponse.data) {
+        //                 // const imageproductData = JSON.stringify(imagesresponse.data, null, 2);
+        //                 const imageproductData = imagesresponse.data
+
+        //                 console.log(`Successfully fetched Images ${imageproductData.length} rows from AppSheet.`);
+
+        //                 // Step 2: Loop through the fetched data and perform your posting task
+        //                 for (const imageproduct of imageproductData) {
+                            
+        //                     // const imagepath=imageproduct['IMAGES PATHS'];
+        //                     // const productid=JSON.stringify(imageproduct['PRODUCT ID'],null,2);
+                            
+        //                     // const imagepath=JSON.stringify(imageproduct['FULL IMAGEURLPATHS'],null,2);
+
+        //                     const imagepathjson=JSON.parse(imageproduct['FULL IMAGEURLPATHS']);
+
+        //                     // console.log("imagepathjson ", imagepathjson)
+        //                     const imagepath=imagepathjson.Url;
+
+
+        //                     const productid=imageproduct['PRODUCT ID']
+
+        //                     // console.log("imagepath", imagepath)
+                            
+
+        
+        //                     if(productid===product.ID){
+        //                         console.log(`Productid =  ${productid} , product.ID = ${product.ID}`);
+                                
+        //                         console.log("fOUND MATCHING ID FOR PRODUCT ID and images product iD", imagepath);
+
+
+        //                         imagepaths.push(imagepath);
+                     
+
+
+        //                     }
+        //                     else{
+        //                         // console.log("NOT find  MATCHING ID FOR PRODUCT ID and images product iD");
+        //                         // console.log("NO MATCH")
+                                
+        //                     }
+
+        //                 }
+
+        //                 console.log("about to push to product ", imagepaths)
+        //                 product.allimagepaths=imagepaths;
+
+        //             } else {
+        //                 console.error('AppSheet API returned an unexpected response IMages :', imagesresponse.data);
+        //             }
+
+
+
+        //             productDetails.push(product);
+                    
+        //             // console.log()
         //             // You can access other columns like this: product.Price, product.Description
         //         }
+        //         console.log("All Products Details " , productDetails);
 
         //         // Send a success response back to the AppSheet bot
         //         // res.status(200).send('Process started successfully.');
@@ -299,9 +428,16 @@ async function  createMarketplaceListing(page,browser){
         //         // res.status(500).send('Error fetching data from AppSheet.');
         //     }
 
-        // } catch (error) {
+
+
+
+
+        //     // res.status(200).send('\n \n Automation task has been triggered successfully.\n');
+        //     console.log("Just falled the RunAutomation Function")
+            
+        // }catch (error) {
         //     console.error('Error in startposting endpoint:', error.message);
-        //     // res.status(500).send('Internal Server Error.');
+        //     res.status(500).send('Internal Server Error.');
         // }
 
 
@@ -333,6 +469,8 @@ async function  createMarketplaceListing(page,browser){
 
 
 
+
+    console.log("Here is in MARKETPLACE allproduct details ", allproductdetails);
 
 
 
