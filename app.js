@@ -1070,6 +1070,9 @@ app.post('/startposting', async (req, res) => {
             // Step 1: Make a POST request to the AppSheet API to get the data
             console.log("NOW pulling main products details ")
 
+            const productDetails=[];
+
+
             const response = await axios.post(
                 `https://api.appsheet.com/api/v2/apps/${APPSHEET_APP_ID}/tables/${APPSHEET_TABLE_ID}/Action`,
                 {
@@ -1093,7 +1096,6 @@ app.post('/startposting', async (req, res) => {
                 const productData = response.data;
                 console.log(`Successfully fetched ${productData.length} rows from AppSheet.`);
                 
-                const productDetails=[];
 
                 // Step 2: Loop through the fetched data and perform your posting task
                 for (const product of productData) {
@@ -1179,7 +1181,7 @@ app.post('/startposting', async (req, res) => {
 
                         }
 
-                        console.log("about to push to product ", imagepaths)
+                        // console.log("about to push to product ", imagepaths)
                         product.allimagepaths=imagepaths;
 
                     } else {
