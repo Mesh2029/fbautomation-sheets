@@ -813,6 +813,8 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                 // Replace ellipses (...) with new lines (\n) in the description
                                                 const formattedDescription = data.DESCRIPTION.replace(/\.\.\./g, '\n\n');
 
+                                                console.log("Fomatted Description ", formattedDescription);
+
                                                 // const formattedTags=data.tags.split("...");
 
                                                 // console.log("here are the formattted tagss  formattedTags");
@@ -1385,7 +1387,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                                 await optionhandle.click();
 
                                                                 // console.log("\n\n\nAlready clicked the select Condition" )                                                
-                                                                // console.log("here are the details the Selected options " + selectoption.outerHTML); // Output the details for debugging
+                                                                console.log("here are the details the Selected options " + selectoption.outerHTML); // Output the details for debugging
                                                                 console.log("Selected Condition Options cliked  successfully.");
                                                             }
                                                             else{
