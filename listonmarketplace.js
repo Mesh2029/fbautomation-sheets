@@ -874,6 +874,8 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                 await page.setInputFiles('label input[type="file"][accept="image/*,image/heif,image/heic"]', validFilePaths);
                                                 console.log("Just selected the images to upload  and uploaded wait 5 seconds before continue")
 
+                                                await page.waitForTimeout(5000);
+
                                
                                                 // Clean up temporary files after the operation is complete
                                                 validFilePaths.forEach(filePath => {
@@ -1012,7 +1014,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                         // console.log('Span HTML:', spanHTML);
 
                                                         // Fill the input with text
-                                                        await inputasElement.type(data.title, {delay:100});
+                                                        await inputasElement.type(data.TITLE, {delay:100});
                                                         
                                                         console.log("Input field filled successfully.");
 
@@ -1112,7 +1114,7 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                         // console.log('Span HTML:', spanHTML);
 
                                                         // Fill the input with text
-                                                        await inputasElement.type(data.price, {delay:100});
+                                                        await inputasElement.type(data.PRICE, {delay:100});
                                                         
                                                         console.log("PRICES INPUT  field filled successfully.");
 
