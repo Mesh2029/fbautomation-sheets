@@ -63,27 +63,40 @@ const {platform} =require("process");
 async function  createMarketplaceListing(page,browser,allproductdetails){
 
     try{
-        
+
+
         function getAppDataDir(appName = 'ali-multiproFbautoposter-us-linwinmac') {
-            const home = os.homedir();
+            const app="/app/data"
+
+
+            // Ensure folder exists
+            if (!fs.existsSync(app)) {
+                fs.mkdirSync(app, { recursive: true });
+                console.log("No App folder Found Just Created a New App  at ", app);
+            }
+            console.log("App Dir Found, Continue...")
+        
+
 
             if (platform === 'win32') {
-                return path.join(process.env.APPDATA || path.join(home, 'AppData', 'Roaming'), appName);
-            }
+                return path.join(app, appName);
+            }else{
+                // Linux and macOS
+                return path.join(app, appName);
 
-            // Linux and macOS
-            return path.join(home, '.config', appName);
+            }
         }
 
         const appDir = getAppDataDir(); // e.g., ~/.config/fbyebot or %APPDATA%\fbyebot
 
+
         // Ensure folder exists
         if (!fs.existsSync(appDir)) {
             fs.mkdirSync(appDir, { recursive: true });
+            console.log("No AppDir Found Just Created a New AppDir  at ", appDir);
         }
-        fs.chmodSync(appDir,0o755)
-
-
+        console.log("AppDir Found, Continue...")
+    
 
         const marketplacelistingimgs = path.join(appDir, 'marketplacelistingimgs');
 
@@ -93,8 +106,16 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
            fs.chmodSync(marketplacelistingimgs,0o755)
 
 
+        // Create a new 'images' directory inside your app directory
+        const imagesDir = path.join(appDir, 'imagesfolder');
 
-        
+        // Ensure the new images directory exists
+        if (!fs.existsSync(imagesDir)) {
+            fs.mkdirSync(imagesDir, { recursive: true });
+            console.log("Created a new 'images' folder at ", imagesDir);
+        }
+        console.log("'images' folder found, continuing...");
+
 
 
 
@@ -316,7 +337,8 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
             }); 
 
 
-            console.log("\n\n Beginningo of the Listing of a NEW NEXT PRODUCT Here is the product's Path     \n\n  " + productfolder );    
+            console.log("\n\n Beginningo of the Listing of a NEW NEXT PRODUCT Here is the product's Path     \n\n  " )
+            console.log(productfolder );    
 
            
 
@@ -807,10 +829,72 @@ async function  createMarketplaceListing(page,browser,allproductdetails){
                                                 // await button.click(), // Trigger the click to open the file chooser
                                                 // console.log("Just clicked the Images Upload buttons")                                                
                                                 
+                                                console.log("Here are the allimagepaths ", productfolder.allimagepaths);
+
+
+                                                const allimagepathsarray=productfolder.allimagepaths;
+
+
+                         
+                                                // 1. Download all images concurrently and save them as temporary files
+                                                const temporaryFilePaths = await Promise.all(allimagepathsarray.map(async (imageUrl) => {
+                                                    try {
+                                                        const response = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+                                                        const imageData = response.data;
+                                                        
+                                                        // Get a unique temporary file path
+                                                        const tempFileName = `image-${Date.now()}-${Math.random().toString(36).substring(2)}.jpg`;
+
+                                                        const tempFilePath = path.join(imagesDir, tempFileName);
+
+                                                        // Save the image data to the temporary file
+                                                        fs.writeFileSync(tempFilePath, imageData);
+
+                                                        console.log(`Successfully downloaded and saved: ${tempFilePath}`);
+                                                        return tempFilePath;
+
+                                                    } catch (error) {
+                                                        console.error(`Failed to download image from ${imageUrl}:`, error.message);
+                                                        return null; // Return null to handle errors gracefully
+                                                    }
+                                                }));
+
+
+
+                                                // Filter out any paths that failed to download
+                                                const validFilePaths = temporaryFilePaths.filter(filePath => filePath !== null);
+
+                                                if (validFilePaths.length === 0) {
+                                                    console.error("No valid images were downloaded. Cannot proceed.");
+                                                    return;
+                                                }
+
+
                                                 // await page.setInputFiles('//label/input[type="file" accept="image/*,image/heif,image/heic"', imagespaths);   
-                                                await page.setInputFiles('label input[type="file"][accept="image/*,image/heif,image/heic"]', productfolder.allimagepaths);
+                                                await page.setInputFiles('label input[type="file"][accept="image/*,image/heif,image/heic"]', validFilePaths);
                                                 console.log("Just selected the images to upload  and uploaded wait 5 seconds before continue")
 
+                               
+                                                // Clean up temporary files after the operation is complete
+                                                validFilePaths.forEach(filePath => {
+                                                    try {
+                                                        fs.unlinkSync(filePath);
+                                                        console.log(`Deleted temporary file: ${filePath}`);
+                                                    } catch (e) {
+                                                        console.error(`Failed to delete file: ${filePath}`);
+                                                    }
+                                                });
+
+                   
+
+
+
+
+
+
+
+
+                                      
                                                 
                                                 // // Wait for a specific timeout (e.g., 5000 milliseconds) before taking a screenshot
                                                 await page.evaluate(() => new Promise(resolve => setTimeout(resolve, 5000)));
